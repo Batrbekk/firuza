@@ -1,68 +1,68 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import logo from '../../../public/images/logo.svg';
+import Telegram from '../../../public/icons/telegram.svg';
+import Vk from '../../../public/icons/vk.svg';
+import Menu from './Menu';
+import Accordion from './Accordion';
 
 export default function Header() {
   return (
     <header className="w-full">
-      <div className="flex justify-between lg:justify-center items-center py-6 px-5 lg:px-24 lg:py-10 relative border-b border-white/10">
-        <div className="gap-2.5 hidden lg:flex absolute left-24">
-          <Link href="#" className="w-10 h-10">
-            <Image 
-              src="/icons/vk.svg" 
-              alt="VK"
-              width={40}
-              height={40}
-              className="text-white"
-            />
+      <div className="flex items-center px-5 py-6 justify-between md:justify-center md:px-0 md:py-[28px] border-b border-white/10 relative">
+        <div className="relative w-[88px] h-[38px] md:w-[148px] md:h-[67px]">
+          <Image src={logo} alt="logo" fill />
+        </div>
+        <div className="absolute md:left-[95px] hidden md:flex items-center gap-x-2.5">
+          <Link href="#" target="_blank" className="flex items-center justify-center relative w-10 h-10">
+            <Image src={Vk} alt="social-icon" fill />
           </Link>
-          <Link href="#" className="w-10 h-10">
-            <Image 
-              src="/icons/instagram.svg"
-              alt="Instagram"
-              width={40} 
-              height={40}
-            />
+          <Link href="#" target="_blank" className="flex items-center justify-center relative w-10 h-10">
+            <Image src={Telegram} alt="social-icon" fill />
           </Link>
         </div>
-
-        <div className='w-[88px] h-[38px] md:w-[148px] md:h-[67px] relative'>
-          <Image
-            src="/images/logo.svg"
-            alt="Logo"
-            fill
-            priority
-          />
-        </div>
-
-          <button className="sm:block lg:hidden">
-            <Image
-              src="/icons/burger.svg"
-              alt="burger"
-              width={36}
-              height={14}
-            />
-          </button>
+        <Menu />
       </div>
-
-      <nav className="hidden md:block border-b border-white/10">
-        <div className="flex justify-center gap-[105px] py-4">
-          <MenuLink text="Салоны" to="/" />
-          <MenuLink text="Наша команда" to="/" />
-          <MenuLink text="Акции" to="/" />
-          <MenuLink text="Обучение" to="/" />
-          <MenuLink text="Блога" to="/" />
-          <MenuLink text="Контакты" to="/" />
+      <div className="py-4 border-b border-white/10 hidden md:flex justify-center relative">
+        <div className="md:max-w-[720px] lg:max-w-[1020px] mx-auto flex items-center justify-between w-full">
+          <Accordion text="Салоны">
+            <div className="flex items-center justify-between w-full">
+              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+                Салон на Саввинском шоссе
+              </Link>
+              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+                Салон на Народного ополчения
+              </Link>
+            </div>
+          </Accordion>
+          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+            Наша команда
+          </Link>
+          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+            Акции
+          </Link>
+          <Accordion text="Обучение">
+            <div className="flex items-center justify-between w-full">
+              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+                Программа обучения
+              </Link>
+              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+                Сертификаты
+              </Link>
+              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+                Работы учеников
+              </Link>
+            </div>
+          </Accordion>
+          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+            Блог
+          </Link>
+          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+            Контакты
+          </Link>
         </div>
-      </nav>
+      </div>
     </header>
-  )
-}
-
-function MenuLink({ text, to }: { text: string, to: string }) {
-  return (
-    <Link href={to} className="flex items-center gap-1.5 text-white uppercase font-tilda-sans font-bold text-sm hover:underline">
-      {text}
-    </Link>
   )
 }

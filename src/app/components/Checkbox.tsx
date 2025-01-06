@@ -29,7 +29,7 @@ export function Checkbox({ label, checked, onChange }: CheckboxProps) {
           )}
         </div>
       </div>
-      <span className="text-sm text-[#292929] font-tilda-sans font-light">
+      <span className="text-[12px] text-grey font-tilda-sans font-light leading-[115%]">
         {label}
       </span>
     </label>

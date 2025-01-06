@@ -1,16 +1,22 @@
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  variant?: 'black' | 'primary';
 }
 
-export function Input({ label, className = '', ...props }: InputProps) {
+export default function Input({ 
+  label, 
+  className = '', 
+  variant = 'primary',
+  ...props 
+}: InputProps) {
   return (
-    <div className="w-full">
-      <input
+    <input
         {...props}
-        className={`w-full h-[50px] px-5 border border-primary font-tilda-sans text-base font-light
-          focus:outline-none focus:border-primary/80 transition-colors
+        className={`w-full h-[50px] px-5 font-tilda-sans text-base font-light
+          focus:outline-none transition-colors
+          ${variant === 'black' ? 'border-black focus:border-black/80' : 'border-primary focus:border-primary/80'}
+          border
           ${className}`}
-      />
-    </div>
+    />
   )
 } 

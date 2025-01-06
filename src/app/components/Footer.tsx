@@ -35,10 +35,11 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-[#292929] pt-20 pb-6">
+    <footer className="bg-[#292929] px-5 lg:px-0 pt-12 md:pt-20 pb-6">
       <div className="container mx-auto">
-        <div className="flex items-start justify-between">
-          <div className="flex flex-col gap-6 max-w-[259px]">
+        <div className="flex flex-col lg:flex-row items-center md:items-start justify-between gap-y-12">
+          {/* Логотип и контакты */}
+          <div className="flex flex-col items-center gap-6 w-full lg:max-w-[259px] text-center lg:text-left order-1">
             <Image 
               src="/images/logo.svg"
               alt="Firuza Nail Studio"
@@ -67,73 +68,78 @@ const Footer = () => {
                 <p className="text-secondary font-tilda-sans font-bold text-sm uppercase">мы в соцсетях</p>
                 <div className="flex gap-4">
                     <Link href="/">
-                        <Image src="/icons/vk.svg" alt="Vk" width={40} height={40} />
+                        <Image src="/icons/vk.svg" alt="vk" width={40} height={40} />
                     </Link>
                     <Link href="/">
-                        <Image src="/icons/instagram.svg" alt="Instagram" width={40} height={40} />
+                        <Image src="/icons/telegram.svg" alt="telegram" width={40} height={40} />
                     </Link>
                 </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 max-w-[239px]">
-            <h5 className="text-lightGrey text-sm font-tilda-sans font-medium">ЖЕЛЕЗНОДОРОЖНЫЙ</h5>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Адрес:</p>
-                <p className="text-white text-sm font-tilda-sans font-light">
-                    Московская область, город Балашиха, микрорайон Железнодорожный, Саввинское шоссе, дом 4, корпус 2
-                </p>
+          {/* Адреса */}
+          <div className="flex flex-row lg:flex-col gap-2 w-full lg:max-w-[239px] order-3 lg:order-2">
+            <div className="flex flex-col gap-2">
+              <h5 className="text-lightGrey text-sm font-tilda-sans font-medium">ЖЕЛЕЗНОДОРОЖНЫЙ</h5>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Адрес:</p>
+                  <p className="text-white text-sm font-tilda-sans font-light">
+                      Московская область, город Балашиха, микрорайон Железнодорожный, Саввинское шоссе, дом 4, корпус 2
+                  </p>
+              </div>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Телефон:</p>
+                  <a href="tel:+79060811441" className="text-white text-sm font-tilda-sans font-light">
+                      +7 (906) 081-14-41
+                  </a>
+              </div>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Почта:</p>
+                  <a href="mailto:firuzanails@gmail.com" className="text-white text-sm font-tilda-sans font-light">
+                      firuzanails@gmail.com
+                  </a>
+              </div>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Режим работы:</p>
+                  <p className="text-white text-sm font-tilda-sans font-light">
+                      Пн-Пт: 09:00–21:00 <br/>
+                      Сб-Вс: 09:30–21:00
+                  </p>
+              </div>
             </div>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Телефон:</p>
-                <a href="tel:+79060811441" className="text-white text-sm font-tilda-sans font-light">
-                    +7 (906) 081-14-41
-                </a>
-            </div>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Почта:</p>
-                <a href="mailto:firuzanails@gmail.com" className="text-white text-sm font-tilda-sans font-light">
-                    firuzanails@gmail.com
-                </a>
-            </div>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Режим работы:</p>
-                <p className="text-white text-sm font-tilda-sans font-light">
-                    Пн-Пт: 09:00–21:00 <br/>
-                    Сб-Вс: 09:30–21:00
-                </p>
-            </div>
-            <h5 className="text-lightGrey text-sm font-tilda-sans font-medium">САВВИНО</h5>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Адрес:</p>
-                <p className="text-white text-sm font-tilda-sans font-light">
-                    Московская область, город Балашиха, микрорайон Саввино, ул. Народного ополчения, д. 1
-                </p>
-            </div>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Телефон:</p>
-                <a href="tel:+79260411441" className="text-white text-sm font-tilda-sans font-light">
-                    +7 (926) 041-14-41
-                </a>
-            </div>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Почта:</p>
-                <a href="mailto:firuzanailstudio@gmail.com" className="text-white text-sm font-tilda-sans font-light">
-                    firuzanailstudio@gmail.com
-                </a>
-            </div>
-            <div>
-                <p className="text-secondary font-tilda-sans font-light text-sm">Режим работы:</p>
-                <p className="text-white text-sm font-tilda-sans font-light">
-                    Пн-Пт: 09:00–21:00 <br/>
-                    Сб-Вс: 09:30–21:00  
-                </p>
+            <div className="flex flex-col gap-2">
+              <h5 className="text-lightGrey text-sm font-tilda-sans font-medium">САВВИНО</h5>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Адрес:</p>
+                  <p className="text-white text-sm font-tilda-sans font-light">
+                      Московская область, город Балашиха, микрорайон Саввино, ул. Народного ополчения, д. 1
+                  </p>
+              </div>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Телефон:</p>
+                  <a href="tel:+79260411441" className="text-white text-sm font-tilda-sans font-light">
+                      +7 (926) 041-14-41
+                  </a>
+              </div>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Почта:</p>
+                  <a href="mailto:firuzanailstudio@gmail.com" className="text-white text-sm font-tilda-sans font-light">
+                      firuzanailstudio@gmail.com
+                  </a>
+              </div>
+              <div>
+                  <p className="text-secondary font-tilda-sans font-light text-sm">Режим работы:</p>
+                  <p className="text-white text-sm font-tilda-sans font-light">
+                      Пн-Пт: 09:00–21:00 <br/>
+                      Сб-Вс: 09:30–21:00  
+                  </p>
+              </div>
             </div>
           </div>
 
           {/* Меню */}
-          <div className="flex flex-col gap-9 max-w-[239px]">
-            <div className="flex flex-col gap-2">
+          <div className="flex flex-row lg:flex-col gap-9 w-full lg:max-w-[239px] order-2 lg:order-3">
+            <div className="flex flex-col gap-4 md:gap-2">
               <h3 className="text-sm uppercase font-tilda-sans font-bold text-[#696969]">меню</h3>
               {menuItems.map((item, index) => (
                 <Link 
@@ -146,7 +152,7 @@ const Footer = () => {
               ))}
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4 md:gap-2">
               <h3 className="text-sm uppercase font-tilda-sans font-bold text-[#696969]">услуги</h3>
               {services.map((service, index) => (
                 <Link
@@ -161,14 +167,14 @@ const Footer = () => {
           </div>
 
           {/* Правовая информация */}
-          <div className="flex flex-col gap-4 max-w-[370px]">
-            <h3 className="text-lightGrey font-tilda-sans font-bold uppercase text-sm">Правовая информация:</h3>
+          <div className="flex flex-col gap-4 w-full lg:max-w-[370px] order-4">
+            <h3 className="text-lightGrey font-tilda-sans font-bold uppercase  text-center md:text-left text-sm">Правовая информация:</h3>
             <div className="flex flex-col gap-2">
               {legalLinks.map((link, index) => (
                 <Link
                   key={index}
                   href="#"
-                  className="text-[#696969] text-sm hover:text-secondary transition-colors font-tilda-sans font-light"
+                  className="text-white/70 text-sm hover:text-secondary transition-colors font-tilda-sans font-light"
                 >
                   {link}
                 </Link>
@@ -178,28 +184,28 @@ const Footer = () => {
         </div>
       </div>
        {/* Копирайт */}
-       <div className="mt-20">
-          <div className="py-4 border-y border-white/10">
-            <div className="flex justify-between items-center container mx-auto">
-                <span className="text-[#696969] text-xs font-tilda-sans font-light">
+       <div className="mt-14 md:mt-20">
+          <div className="py-4 md:px-4 lg:px-0 border-y border-white/10">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center container mx-auto gap-y-4 md:gap-y-0 py-4 md:py-0">
+                <span className="text-[#FBF7F3]/50 text-xs font-tilda-sans font-light">
                     Copyright ©2024 Firuza Nail Studio. Все права защищены
                 </span>
-                <Link href="#" className="text-[#696969] text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
+                <Link href="#" className="text-[#FBF7F3]/50 text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
                     Политика использования файлов cookie
                 </Link>
-                <Link href="#" className="text-[#696969] text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
+                <Link href="#" className="text-[#FBF7F3]/50 text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
                     Политика обработки персональных данных
                 </Link>
-                <Link href="#" className="text-[#696969] text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
+                <Link href="#" className="text-[#FBF7F3]/50 text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
                     Специальная оценка условий труда
                 </Link>
-                <Link href="#" className="text-[#696969] text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
+                <Link href="#" className="text-[#FBF7F3]/50 text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
                     Сделано в Mojo
                 </Link>
             </div>
           </div>
-          <div>
-            <p className="text-[#696969] text-xs mt-2.5 container mx-auto font-tilda-sans font-light">
+          <div className="md:px-4 lg:px-0">
+            <p className="text-white/50 text-xs pt-2.5 pb-6 md:pb-0 container mx-auto font-tilda-sans font-light">
                 Запрещается повторение, копирование, передача, воспроизведение, распространение, продажа (перепродажа) и иное использование любых полученных и (или) размещённых на сайте https://firuzanail.ru данных, сведений, материалов, а также информации о предоставляемых и (или) уже предоставленных услугах и их результатах для каких‑либо коммерческих целей (в том числе, для продвижения или извлечения прибыли) без согласия администрации сайта.
             </p>
           </div>

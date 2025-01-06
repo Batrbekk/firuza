@@ -28,3 +28,20 @@ body {
   background-image: url('/images/back-main.svg');
   background-repeat: no-repeat;
 }
+
+/* Добавляем стили для анимации бургер-меню */
+.burger-line {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.menu-open .burger-line:first-child {
+  @apply transform translate-y-[6px] rotate-45 w-[22px] bg-primary;
+}
+
+.menu-open .burger-line:nth-child(2) {
+  @apply opacity-0;
+}
+
+.menu-open .burger-line:last-child {
+  @apply transform -translate-y-[6px] -rotate-45 w-[22px] bg-primary;
+}
