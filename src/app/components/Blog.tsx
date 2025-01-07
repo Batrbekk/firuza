@@ -22,7 +22,7 @@ interface BlogPost {
 
 const BlogCard = ({ post }: { post: BlogPost }) => {
   return (
-    <article className="w-full md:w-[370px] flex-1 min-w-full">
+    <article className="w-full md:w-[370px] flex-1 min-w-full md:min-w-0">
       <div className="relative h-[370px] mb-2">
         <Image 
           src={post.image} 
