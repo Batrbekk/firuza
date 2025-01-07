@@ -24,7 +24,7 @@ export default function Button({
         flex items-center justify-center gap-2 px-5 py-4
         font-tilda-sans font-bold text-sm uppercase
         transition-colors duration-300
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 h-[50px]
         ${baseStyles[variant]}
         ${className}
       `}

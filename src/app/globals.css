@@ -45,3 +45,44 @@ body {
 .menu-open .burger-line:last-child {
   @apply transform -translate-y-[6px] -rotate-45 w-[22px] bg-primary;
 }
+
+
+@media (max-width: 1640px) {
+  #advantages {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+  #advantage-item {
+    max-width: 320px;
+  }
+  #about-desc {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1540px) {
+  #desktop-gallery {
+    max-width: 100%;
+    padding: 0 95px;
+  }
+  #blog-section {
+    max-width: 100%!important;
+    padding-right: 95px;
+    padding-left: 95px;
+  }
+  #about-section {
+    max-width: 100%!important;
+    padding-right: 95px;
+    padding-left: 95px;
+  }
+}
+
+@media (max-width: 1500px) {
+  #desktop-gallery {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #desktop-gallery > div:last-child {
+    display: none;
+  }
+}

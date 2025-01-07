@@ -1,5 +1,7 @@
 'use client'
 
+import { cn } from "@/lib/utils";
+
 interface ServiceItemProps {
   name: string;
   price: number;
@@ -8,10 +10,12 @@ interface ServiceItemProps {
 function ServiceItem({ name, price }: ServiceItemProps) {
   return (
     <div className="flex items-center w-full">
-      <span className="text-black font-tilda-sans text-[26px]">{name}</span>
-      <div className="border-b border-dashed border-primary flex-grow mx-2"></div>
+      <span className="text-black font-tilda-sans text-[18px] md:text-[26px] w-fit md:max-w-[370px]">
+        {name}
+      </span>
+      <div className="border-b border-dashed border-primary flex-grow mx-2" />
       <div className="flex items-center gap-1 whitespace-nowrap">
-        <span className="text-primary font-tilda-sans text-[26px]">от {price} ₽</span>
+        <span className="text-primary font-tilda-sans text-[18px] md:text-[26px]">от {price} ₽</span>
       </div>
     </div>
   )
@@ -20,12 +24,15 @@ function ServiceItem({ name, price }: ServiceItemProps) {
 interface ServiceCategoryProps {
   title: string;
   services: ServiceItemProps[];
+  className?: string;
 }
 
-function ServiceCategory({ title, services }: ServiceCategoryProps) {
+function ServiceCategory({ title, services, className }: ServiceCategoryProps) {
   return (
-    <div className="flex flex-col gap-9 max-w-[560px] w-full">
-      <h3 className="text-black text-[38px] font-tenor-sans text-center">{title}</h3>
+    <div className={cn("flex flex-col gap-[18px] md:gap-9 w-full", className)}>
+      <h3 className="text-black text-[24px] md:text-[38px] font-tenor-sans text-center">
+        {title}
+      </h3>
       <div className="flex flex-col gap-6">
         {services.map((service, index) => (
           <ServiceItem key={index} {...service} />
@@ -73,7 +80,8 @@ export default function Services() {
             { name: "2D", price: 3000 },
             { name: "3D", price: 3000 },
             { name: "Ламинирование ресниц", price: 2500 }
-          ]
+          ],
+          className: "hidden md:flex"
         },
         {
           title: "Брови",
@@ -89,32 +97,27 @@ export default function Services() {
             { name: "Перманентный макияж бровей", price: 8000 },
             { name: "Перманентный макияж губ", price: 6000 },
             { name: "Коррекция перманентного макияжа бровей", price: 8000 }
-          ]
+          ],
+          className: "hidden md:flex"
         }
     ];
 
   return (
-    <section className="w-full py-20 container mx-auto">
-      <div className="flex flex-col items-center justify-center w-full">
-        <h2 className="text-black text-[44px] font-tenor-sans text-center mb-12">УСЛУГИ И ЦЕНЫ</h2>
-        <div className="flex justify-center gap-x-28">
-            <div className="flex flex-col gap-y-[60px]">
-                {leftColumnCategories.map((category, index) => (
-                <ServiceCategory key={`left-${index}`} {...category} />
-                ))}
-            </div>
-            <div className="flex flex-col gap-y-[60px]">
-                {rightColumnCategories.map((category, index) => (
-                <ServiceCategory key={`right-${index}`} {...category} />
-                ))}
-            </div>
-        </div>
-        <div className="flex justify-center mt-[60px]">
-          <button className="bg-[#6A7B61] text-white uppercase font-bold text-sm py-4 px-10">
-            полный прайс-лист
-          </button>
-        </div>
+    <div className="max-w-[1280px] w-full mx-auto flex lg:items-start justify-between lg:flex-row flex-col items-center gap-y-9 mt-6 mb-9 md:mt-12 md:mb-[60px]">
+      <div className="flex flex-col gap-y-9 md:gap-y-[60px] max-w-[580px] w-full">
+        {leftColumnCategories.map((category, index) => (
+          <ServiceCategory key={`left-${index}`} {...category} />
+        ))}
       </div>
-    </section>
+      <div className="flex flex-col gap-y-9 md:gap-y-[60px] max-w-[580px] w-full">
+        {rightColumnCategories.map((category, index) => (
+          <ServiceCategory 
+            key={`right-${index}`} 
+            {...category}
+            className={category.className} 
+          />
+        ))}
+      </div>
+    </div>
   ) 
 } 

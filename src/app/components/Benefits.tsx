@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
 interface BenefitProps {
@@ -16,13 +17,13 @@ interface BenefitProps {
 
 const Benefit = ({ subtitle, title, description, image, stats, imagePosition = 'left' }: BenefitProps) => {
   const content = (
-    <div className="w-[630px] flex flex-col gap-4">
+    <div className="w-full lg:w-[630px] flex flex-col gap-4">
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-2">
-          <h6 className="text-primary text-sm font-tilda-sans font-bold uppercase">
+          <h6 className="text-primary text-[14px] font-tilda-sans font-bold uppercase">
             {subtitle}
           </h6>
-          <h2 className="text-white text-[44px] font-tenor-sans uppercase leading-[128%]">
+          <h2 className="text-white text-[28px] md:text-[44px] font-tenor-sans uppercase leading-[128%]">
             {title}
           </h2>
         </div>
@@ -31,10 +32,10 @@ const Benefit = ({ subtitle, title, description, image, stats, imagePosition = '
         </p>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-col md:flex-row">
         {stats.map((stat, index) => (
-          <div key={index} className="flex gap-4 items-center">
-            <p className="text-white text-base font-tilda-sans font-light w-min">
+          <div key={index} className={cn('flex gap-4 items-center', index === 1 ? 'justify-end' : 'justify-start')}>
+            <p className={cn('text-white text-base font-tilda-sans font-light', stat.label === 'опытных мастеров' ? '' : 'w-min')}>
               {stat.label}
             </p>
             <p className="text-white text-[90px] font-tenor-sans">
@@ -54,7 +55,7 @@ const Benefit = ({ subtitle, title, description, image, stats, imagePosition = '
   )
 
   const imageBlock = (
-    <div className="w-[520px] h-[448px] relative">
+    <div className="w-full lg:w-[520px] h-[448px] relative">
       <Image 
         src={image}
         alt="Benefit illustration"
@@ -65,7 +66,7 @@ const Benefit = ({ subtitle, title, description, image, stats, imagePosition = '
   )
 
   return (
-    <div className="flex gap-[130px] items-center">
+    <div className="flex flex-col lg:flex-row gap-y-[36px] gap-x-[130px] items-center">
       {imagePosition === 'left' ? (
         <>
           {imageBlock}
@@ -120,8 +121,8 @@ export default function Benefits() {
   ]
 
   return (
-    <section className="bg-[#292929] py-[130px]">
-      <div className="container mx-auto flex flex-col gap-[60px]">
+    <section className="bg-[#292929] px-5 lg:px-0 py-12 md:py-[130px]">
+      <div className="max-w-[1280px] mx-auto flex flex-col gap-[60px]">
         {benefits.map((benefit, index) => (
           <Benefit key={index} {...benefit} />
         ))}

@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { flushSync } from 'react-dom'
+import useEmblaCarousel from 'embla-carousel-react'
 
 interface Master {
   id: number
@@ -19,7 +21,7 @@ const masters: Master[] = [
     name: 'МАША',
     role: 'ТОП МАСТЕР',
     description: 'Специализируется на аккуратном и долговечном маникюре и педикюре',
-    image: '/images/masters/1.svg',
+    image: '/images/masters/1.png',
     salon: 'Салон на Пушкинской'
   },
   {
@@ -27,7 +29,7 @@ const masters: Master[] = [
     name: 'ДАНА',
     role: 'СТАРШИЙ МАСТЕР',
     description: 'Любит экспериментировать с дизайном и использовать различные техники',
-    image: '/images/masters/2.svg',
+    image: '/images/masters/2.png',
     salon: 'Салон на Кирова'
   },
   {
@@ -35,7 +37,7 @@ const masters: Master[] = [
     name: 'ЕЛЕНА',
     role: 'ТОП МАСТЕР',
     description: 'Специализируется на сложных дизайнах, воплощая в жизнь самые смелые идеи клиентов',
-    image: '/images/masters/3.svg',
+    image: '/images/masters/3.png',
     salon: 'Салон на Ленина'
   },
   {
@@ -43,7 +45,7 @@ const masters: Master[] = [
     name: 'КРИСТИНА',
     role: 'МАСТЕР',
     description: 'Специализируется на аккуратном и долговечном маникюре и педикюре',
-    image: '/images/masters/4.svg',
+    image: '/images/masters/4.png',
     salon: 'Салон на Пушкинской'
   },
   {
@@ -51,7 +53,7 @@ const masters: Master[] = [
     name: 'КРИСТИНА',
     role: 'МАСТЕР',
     description: 'Специализируется на аккуратном и долговечном маникюре и педикюре',
-    image: '/images/masters/4.svg',
+    image: '/images/masters/4.png',
     salon: 'Салон на Пушкинской'
   },
   {
@@ -59,7 +61,7 @@ const masters: Master[] = [
     name: 'КРИСТИНА',
     role: 'МАСТЕР',
     description: 'Специализируется на аккуратном и долговечном маникюре и педикюре',
-    image: '/images/masters/4.svg',
+    image: '/images/masters/4.png',
     salon: 'Салон на Пушкинской'
   },
   {
@@ -67,7 +69,7 @@ const masters: Master[] = [
     name: 'КРИСТИНА',
     role: 'МАСТЕР',
     description: 'Специализируется на аккуратном и долговечном маникюре и педикюре',
-    image: '/images/masters/4.svg',
+    image: '/images/masters/4.png',
     salon: 'Салон на Пушкинской'
   },
   {
@@ -75,7 +77,7 @@ const masters: Master[] = [
     name: 'АЛЛА',
     role: 'ТОП МАСТЕР',
     description: 'Любит экспериментировать с дизайном и использовать различные техники',
-    image: '/images/masters/5.svg',
+    image: '/images/masters/5.png',
     salon: 'Салон на Кирова'
   }
 ]
@@ -90,23 +92,50 @@ const MastersSection = () => {
   const [activeSalon, setActiveSalon] = useState(salons[0])
   const filteredMasters = masters.filter(master => master.salon === activeSalon)
 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+    containScroll: 'trimSnaps',
+    dragFree: false,
+    skipSnaps: false,
+    slidesToScroll: 1,
+    inViewThreshold: 0.7
+  })
+
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  const onScroll = useCallback(() => {
+    if (!emblaApi) return
+    const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()))
+    setScrollProgress(progress)
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    
+    emblaApi.on('scroll', () => {
+      flushSync(() => onScroll())
+    })
+    
+    onScroll()
+  }, [emblaApi, onScroll])
+
   return (
-    <section className="py-20 container mx-auto">
-      <div className="mb-9">
-        <p className="text-[#6A7B61] text-sm mb-2">
+    <section className="pt-12 pb-[96px] md:py-20 max-w-[1280px] mx-auto px-5 lg:px-0">
+      <div className="flex flex-col gap-2 mb-6 md:mb-9">
+        <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
           Доверьте свою красоту профессионалам
-        </p>
-        <h2 className="text-4xl">
+        </h6>
+        <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
           наша команда мастеров
         </h2>
       </div>
 
-      <div className="flex gap-4 mb-9">
+      <div className="flex flex-col lg:flex-row gap-4 mb-12 md:mb-9">
         {salons.map((salon) => (
           <button
             key={salon}
             onClick={() => setActiveSalon(salon)}
-            className={`px-12 py-2.5 border border-black ${
+            className={`px-12 py-2.5 border border-black hover:opacity-80 ${
               activeSalon === salon 
                 ? 'bg-black text-white' 
                 : 'bg-transparent text-black'
@@ -117,9 +146,9 @@ const MastersSection = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-x-5 gap-y-9">
+      <div className="hidden md:flex flex-wrap gap-x-5 gap-y-9">
         {filteredMasters.map((master) => (
-          <div key={master.id} className="flex flex-col gap-6">
+          <div key={master.id} className="flex flex-col gap-6 w-full md:max-w-[48%] lg:max-w-[412px]">
             <div className="relative h-[600px]">
               <Image
                 src={master.image}
@@ -138,16 +167,53 @@ const MastersSection = () => {
             >
                 Записаться к мастеру
                 <Image 
-                src="/icons/r-arrow.svg" 
-                alt="arrow-right" 
-                width={17} 
-                height={10} 
-                className="transition-transform duration-300 group-hover:translate-x-2"
+                  src="/icons/r-arrow.svg" 
+                  alt="arrow-right" 
+                  width={17} 
+                  height={10} 
+                  className="transition-transform duration-300 group-hover:translate-x-2"
                 />
             </button>
             </div>
           </div>
         ))}
+      </div>
+      
+      <div className="md:hidden">
+        <div className="overflow-hidden relative" ref={emblaRef}>
+          <div className="flex gap-5">
+            {filteredMasters.map((master) => (
+              <div key={master.id} className="flex flex-col gap-6 w-full flex-1 min-w-full">
+                <div className="relative h-[600px]">
+                  <Image
+                    src={master.image}
+                    alt={master.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <span className="text-primary font-tilda-sans font-bold text-sm">{master.role}</span>
+                  <h3 className="text-lg font-bold font-tilda-sans">{master.name}</h3>
+                  <p className="text-base font-light font-tilda-sans max-w-[346px]">{master.description}</p>
+                  <button
+                    className="w-[221px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-sm uppercase group"
+                >
+                    Записаться к мастеру
+                    <Image 
+                      src="/icons/r-arrow.svg" 
+                      alt="arrow-right" 
+                      width={17} 
+                      height={10} 
+                      className="transition-transform duration-300 group-hover:translate-x-2"
+                    />
+                </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
