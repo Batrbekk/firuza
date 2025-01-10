@@ -147,12 +147,17 @@ export default function Home() {
 
     return (
         <main>
-            <section className="relative overflow-hidden">
+            <section className="relative overflow-x-hidden">
                 <Header />
                 <img 
                     src="/images/bg-main.png" 
                     alt="team" 
                     className="-z-10 absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0" 
+                />
+                <img 
+                    src="/images/bg-main-layer.png" 
+                    alt="team" 
+                    className="-z-5 absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0 hidden md:block" 
                 />
                 <img 
                     ref={leftHandRef}
@@ -243,7 +248,7 @@ export default function Home() {
                   </Dropdown>
                 </div>
             </section>
-            <section className="px-5 lg:px-0 py-12 lg:py-20 flex flex-col md:border-dashed md:border border-black/10">
+            <section className="px-5 lg:px-0 py-12 lg:py-20 flex flex-col md:border-dashed md:border border-black/10 bg-[#fcfcfc] md:mg-white">
               <h3 className='text-center text-[28px] md:text-[44px] font-tenor-sans uppercase'>
                 УСЛУГИ И ЦЕНЫ
               </h3>

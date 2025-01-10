@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ArticleCard from './ArticleCard';
+import Button from './Button';
 
 type Article = {
   img: string;
@@ -99,6 +100,13 @@ export default function TabsSection({
             title={article.title}
           />
         ))}
+      </div>
+
+      {/* button */}
+      <div className="flex justify-center mt-3 lg:mt-6">
+        <Button className="w-full lg:max-w-[240px]">
+          Смотреть еще
+        </Button>
       </div>
     </div>
   );

@@ -61,6 +61,14 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
         onClick={handleBackdropClick}
       >
         <div className="relative bg-white w-[760px] px-6 md:px-[112px] py-[56px] mx-5">
+          <button className="absolute top-4 right-4" onClick={onClose}>
+            <Image 
+              src="/icons/close.svg" 
+              alt="close" 
+              width={12} 
+              height={12}
+            />
+          </button>
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <h2 className="text-[28px] md:text-[38px] font-tenor-sans">

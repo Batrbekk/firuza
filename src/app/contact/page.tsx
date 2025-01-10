@@ -67,7 +67,7 @@ export default function Contact() {
 						<img 
 							src="/images/bg-contact.png" 
 							alt="team" 
-							className="-z-10 absolute object-cover object-bottom top-0 left-0 w-full h-full" 
+							className="-z-10 absolute object-cover object-top md:object-center lg:object-[50%_83%] top-0 left-0 w-full h-full" 
 						/>
             <div className="px-5 md:px-0 flex flex-col items-center gap-y-6 md:gap-y-4 mx-auto md:max-w-[528px] text-center py-24 md:pt-[60px] md:pb-20">
                 <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px]">
@@ -138,7 +138,7 @@ export default function Contact() {
 							>
 								<div className="absolute top-0 left-0 w-full h-full">
 									<iframe 
-										src="https://yandex.kz/map-widget/v1/?ll=38.010094%2C55.744121&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjcwMzE5MBKfAdCg0L7RgdGB0LjRjywg0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsINCR0LDQu9Cw0YjQuNGF0LAsINC80LjQutGA0L7RgNCw0LnQvtC9INCW0LXQu9C10LfQvdC-0LTQvtGA0L7QttC90YvQuSwg0KHQsNCy0LLQuNC90YHQutC-0LUg0YjQvtGB0YHQtSwgNNC6MiIKDUsKGEIVKfpeQg%2C%2C&z=16.12" 
+										src="https://yandex.ru/map-widget/v1/?ll=38.010094%2C55.744121&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjcwMzE5MBKfAdCg0L7RgdGB0LjRjywg0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsINCR0LDQu9Cw0YjQuNGF0LAsINC80LjQutGA0L7RgNCw0LnQvtC9INCW0LXQu9C10LfQvdC-0LTQvtGA0L7QttC90YvQuSwg0KHQsNCy0LLQuNC90YHQutC-0LUg0YjQvtGB0YHQtSwgNNC6MiIKDUsKGEIVKfpeQg%2C%2C&z=16.12" 
 										width="100%" 
 										height="100%" 
 										frameBorder="0" 
@@ -202,7 +202,7 @@ export default function Contact() {
 							>
 								<div className="absolute top-0 left-0 w-full h-full">
 									<iframe 
-										src="https://yandex.kz/map-widget/v1/?ll=38.026944%2C55.735277&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgozMjY1NDk4MDc3Ep0B0KDQvtGB0YHQuNGPLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0JHQsNC70LDRiNC40YXQsCwg0LzQuNC60YDQvtGA0LDQudC-0L0g0KHQsNCy0LLQuNC90L4sINGD0LvQuNGG0LAg0J3QsNGA0L7QtNC90L7Qs9C-INCe0L_QvtC70YfQtdC90LjRjywgMSIKDZYbGEIV7PBeQg%2C%2C&z=16.88" 
+										src="https://yandex.ru/map-widget/v1/?ll=38.026944%2C55.735277&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgozMjY1NDk4MDc3Ep0B0KDQvtGB0YHQuNGPLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0JHQsNC70LDRiNC40YXQsCwg0LzQuNC60YDQvtGA0LDQudC-0L0g0KHQsNCy0LLQuNC90L4sINGD0LvQuNGG0LAg0J3QsNGA0L7QtNC90L7Qs9C-INCe0L_QvtC70YfQtdC90LjRjywgMSIKDZYbGEIV7PBeQg%2C%2C&z=16.88" 
 										width="100%" 
 										height="100%" 
 										frameBorder="0" 

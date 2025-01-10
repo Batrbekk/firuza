@@ -60,7 +60,7 @@ body {
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1540px) {
+@media (min-width: 1441px) and (max-width: 1540px) {
   #desktop-gallery {
     max-width: 100%;
     padding: 0 95px;
@@ -77,12 +77,18 @@ body {
   }
 }
 
-@media (max-width: 1500px) {
-  #desktop-gallery {
-    flex-wrap: wrap;
-    justify-content: center;
+@media (min-width: 1000px) and (max-width: 1441px) {
+  #about-section {
+    max-width: 100%!important;
+    padding-right: 42px;
+    padding-left: 42px;
   }
-  #desktop-gallery > div:last-child {
-    display: none;
+}
+
+@media (max-width: 1441px) {
+  #desktop-gallery {
+    justify-content: center;
+    padding-left: 42px;
+    padding-right: 42px;
   }
 }

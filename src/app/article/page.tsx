@@ -184,7 +184,7 @@ export default function Article() {
 			</section>
 			<section className="py-12 md:py-20 px-5 lg:px-0 w-full max-w-[1280px] mx-auto">
 				<div className="flex flex-col items-center gap-y-10">
-					<h3 className="font-tenor-sans text-[28px] md:text-[38px]">
+					<h3 className="font-tenor-sans text-[28px] md:text-[38px] text-center">
 						Статьи из этой категории
 					</h3>
 					<div className="flex flex-col md:flex-row gap-y-7 flex-wrap md:justify-between w-full">
@@ -211,9 +211,6 @@ export default function Article() {
 				</div>
 				<Input variant="black" placeholder="Введите свою почту" />
 				<div className="flex flex-col gap-y-3 max-w-[459px]">
-					<Button>
-						Получать новости и следовать вашим советам
-					</Button>
 					<Checkbox 
 						label="Я прочитал(а) и даю Согласие на получение информационной и рекламной рассылки" 
 						checked={isChecked} 
@@ -224,6 +221,9 @@ export default function Article() {
 						checked={isChecked2} 
 						onChange={() => setIsChecked2(!isChecked2)} 
 					/>
+					<Button>
+						Получать новости и следовать вашим советам
+					</Button>
 				</div>
 			</section>
 			<Footer />

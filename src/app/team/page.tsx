@@ -54,7 +54,7 @@ export default function Team() {
 									Наша команда
                 </TextReveal>
                 <p 
-                    className="text-white font-tilda-sans text-lg"
+                    className="text-white font-tilda-sans text-lg max-w-[324px] md:max-w-[516px]"
                 >
                    Фундамент FirUza Nail Studio — это профессиональные мастера, влюблённые в свою профессию.
                 </p>

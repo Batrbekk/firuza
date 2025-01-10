@@ -256,7 +256,7 @@ export default function Rules() {
 								className="w-[630px] h-[357px] hidden lg:block relative"
 							>
 								<img 
-									src="/images/rules/3.png" 
+									src="/images/rules/3.svg" 
 									alt="rules" 
 									className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
 								/>

@@ -10,7 +10,7 @@ function AdvantageItem({ icon, title, description }: AdvantageItemProps) {
   return (
     <div id="advantage-item" className="flex flex-col items-center gap-6 max-w-[360px] w-full">
       <img 
-        src={`/icons/advantage/${icon}.png`}
+        src={`/icons/advantage/${icon}.svg`}
         alt={title}
       />
       <h5 className="text-center font-tilda-sans text-[18px] font-bold uppercase">

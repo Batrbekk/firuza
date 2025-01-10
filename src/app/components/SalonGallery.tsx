@@ -68,9 +68,9 @@ export default function SalonGallery() {
           </p>
         </div>
 
-        <div id="desktop-gallery" className="hidden md:flex gap-5 max-w-[1540px] mx-auto">
+        <div id="desktop-gallery" className="hidden md:flex gap-5 max-w-[1540px] mx-auto w-full">
           {/* Первая колонка */}
-          <div className="w-[370px] h-[650px] relative">
+          <div className="w-[24.02%] h-[650px] relative">
             <Image 
               src="/images/salons/1.png"
               alt="Salon interior"
@@ -80,7 +80,7 @@ export default function SalonGallery() {
           </div>
 
           {/* Вторая колонка */}
-          <div className="w-[240px] flex flex-col gap-5">
+          <div className="w-[15.58%] flex flex-col gap-5">
             <div className="h-[315px] relative">
               <Image 
                 src="/images/salons/2.png"
@@ -100,7 +100,7 @@ export default function SalonGallery() {
           </div>
 
           {/* Третья колонка */}
-          <div className="w-[370px] h-[650px] relative">
+          <div className="w-[24.02%] h-[650px] relative">
             <Image 
               src="/images/salons/4.png"
               alt="Salon interior"
@@ -110,7 +110,7 @@ export default function SalonGallery() {
           </div>
 
           {/* Четвертая колонка */}
-          <div className="w-[239px] flex flex-col gap-5">
+          <div className="w-[15.52%] flex flex-col gap-5">
             <div className="h-[421px] relative">
               <Image 
                 src="/images/salons/5.png"
@@ -130,7 +130,7 @@ export default function SalonGallery() {
           </div>
 
           {/* Пятая колонка */}
-          <div className="w-[239px] flex flex-col gap-5">
+          <div className="w-[15.52%] flex flex-col gap-5">
             <div className="h-[318px] relative">
               <Image 
                 src="/images/salons/7.png"

@@ -232,10 +232,10 @@ export default function Blog() {
 							<p className="w-full line-clamp-5 lg:line-clamp-1 pr-0 lg:pr-4 text-white font-tilda-sans text-[18px] h-[136px] lg:h-[27px]">
 								Оформление бровей стало неотъемлемой частью ухода за внешностью для многих людей. Это процедура, которая помогает подчеркнуть естественную красоту лица, сделать взгляд более выразительным и ухоженным. В салонах красоты предлагают различные методы оформления бровей, каждый из которых имеет свои особенности, преимущества и возможные недостатки.
 							</p>
-							<Button variant="outline" className="text-secondary border-secondary w-full lg:max-w-[240px]">прочитать статью</Button>
+							<Button variant="outline" className="text-secondary border-secondary w-full lg:max-w-[240px] hover:bg-secondary hover:text-white">прочитать статью</Button>
 						</div>
 						<div ref={imageRef} className="relative w-full h-[336px] md:h-[420px] lg:w-[555px] lg:h-[555px]">
-							<img src="/images/article/1.png" alt="blog" className="absolute top-0 left-0 w-full h-full" />
+							<img src="/images/article/1.png" alt="blog" className="absolute top-0 left-0 w-full h-full object-cover object-left" />
 						</div>
 					</div>
 			</section>
@@ -258,9 +258,6 @@ export default function Blog() {
 				</div>
 				<Input variant="black" placeholder="Введите свою почту" />
 				<div className="flex flex-col gap-y-3 max-w-[459px]">
-					<Button>
-						Получать новости и следовать вашим советам
-					</Button>
 					<Checkbox 
 						label="Я прочитал(а) и даю Согласие на получение информационной и рекламной рассылки" 
 						checked={isChecked} 
@@ -271,6 +268,9 @@ export default function Blog() {
 						checked={isChecked2} 
 						onChange={() => setIsChecked2(!isChecked2)} 
 					/>
+					<Button>
+						Получать новости и следовать вашим советам
+					</Button>
 				</div>
 			</section>
 			<Footer />

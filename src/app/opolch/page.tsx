@@ -30,10 +30,10 @@ export default function Home() {
             <div 
               className='flex items-center justify-center flex-col md:flex-row gap-5 w-full'
             >
-              <Button className="w-full md:w-[240px]">
+              <Button className="w-full md:w-[240px] hover:bg-white hover:text-primary">
                 Записаться
               </Button>
-              <Button variant='outline' className="w-full md:w-[240px] text-white border-white">
+              <Button variant='outline' className="w-full md:w-[240px] text-white border-white hover:border-primary hover:text-primary">
                 посмотреть цены
               </Button>
         </div>
@@ -45,28 +45,35 @@ export default function Home() {
           <div className="flex flex-col gap-y-6">
             <div className="flex flex-col gap-2">
               <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
-                о наших салонах
+                о салоне 
               </h6>
               <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
                 Firuza Nail Studio
               </h2>
             </div>
             <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-              Добро пожаловать в сеть салонов красоты FirUza Nail Studio!
-              В наших салонах мы создали уютную и гостеприимную атмосферу, где каждый посетитель чувствует себя как дома. Мы уделяем большое внимание мелочам, чтобы ваш визит был максимально комфортным и приятным.
+              Добро пожаловать в наш салон, где качество встречается с брендом!
             </p>
             <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-              Приходите к нам и убедитесь сами, почему FirUza Nail Studio — это идеальное место для заботы о себе и своем внешнем виде. Мы всегда рады видеть вас и готовы подарить вам радость и уверенность в своей красоте!
+              Мы гордимся тем, что предоставляем нашим клиентам только самое лучшее. Каждый визит к нам — это уникальный опыт, где внимание к деталям и высокие стандарты обслуживания стоят на первом месте. Уже 6 лет мы дарим улыбки и хорошее настроение нашим гостям, именно поэтому мы открыли второй филиал FirUza Nail Studio.
+            </p>
+            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+              Почему выбирают нас?
+            </p>
+            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+              С нами безопасно, красиво, качественно и удобно.
+              Мы создаём прекрасное настроение на весь день!
+              Приходите и убедитесь сами. Мы ждем вас для того, чтобы сделать ваш день особенным!
             </p>
           </div>
           <div className="flex items-center flex-col md:flex-row justify-between mt-4">
             <div className="flex items-center w-full gap-x-4">
               <p className="font-tilda-sans font-light text-[16px]">
-                актуальных <br />
-                расцветок
+                опытных <br />
+                мастеров
               </p>
               <p className="font-tenor-sans text-[90px]">
-                100<span className="text-[64px]">+</span>
+                12<span className="text-[64px]">+</span>
               </p>
             </div>
             <div className="flex items-center w-full justify-end md:justify-start gap-x-4">

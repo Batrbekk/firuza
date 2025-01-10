@@ -56,11 +56,10 @@ const Benefit = ({ subtitle, title, description, image, stats, imagePosition = '
 
   const imageBlock = (
     <div className="w-full lg:w-[520px] h-[448px] relative">
-      <Image 
+      <img 
         src={image}
         alt="Benefit illustration"
-        fill
-        className="object-cover"
+        className="object-cover absolute top-0 left-0 w-full h-full"
       />
     </div>
   )
@@ -88,7 +87,7 @@ export default function Benefits() {
       subtitle: "Доверьте свои ногти лучшим специалистам",
       title: "Мастера высшего класса",
       description: "В FirUza Nail Studio работают только высококвалифицированные мастера с многолетним опытом и подтверждёнными сертификатами. Они постоянно совершенствуют свои навыки, осваивая новые техники и тренды. Мы гарантируем безупречное качество выполнения любой процедуры, использование только профессиональных материалов и долговечность маникюра. Вы будете уверены в результате!",
-      image: "/images/benefits/1.svg",
+      image: "/images/benefits/1.png",
       stats: [
         {
           label: "филиала",
@@ -105,7 +104,7 @@ export default function Benefits() {
       subtitle: "Создайте свой неповторимый образ вместе с нами",
       title: "индивидуальный подход",
       description: "В FirUza Nail Studio мы верим, что красота — это индивидуальность. Наши мастера внимательно выслушают ваши пожелания, учтут особенности ваших ногтей и помогут создать дизайн, идеально подчёркивающий вашу красоту и стиль. Мы предлагаем широкий выбор техник, цветов и материалов, чтобы воплотить ваши самые смелые идеи в жизнь. Ваш неповторимый образ — наша главная задача!",
-      image: "/images/benefits/2.svg",
+      image: "/images/benefits/2.png",
       stats: [
         {
           label: "актуальных расцветок",

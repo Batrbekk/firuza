@@ -39,7 +39,7 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row items-center md:items-start justify-between gap-y-12">
           {/* Логотип и контакты */}
-          <div className="flex flex-col items-center gap-6 w-full lg:max-w-[259px] text-center lg:text-left order-1">
+          <div className="flex flex-col items-center lg:items-start gap-6 w-full lg:max-w-[259px] text-center lg:text-left order-1">
             <Image 
               src="/images/logo.svg"
               alt="Firuza Nail Studio"
@@ -66,7 +66,7 @@ const Footer = () => {
 
             <div>
                 <p className="text-secondary font-tilda-sans font-bold text-sm uppercase">мы в соцсетях</p>
-                <div className="flex gap-4">
+                <div className="flex gap-x-4 justify-center lg:justify-start">
                     <Link href="/">
                         <Image src="/icons/vk.svg" alt="vk" width={40} height={40} />
                     </Link>
@@ -188,7 +188,7 @@ const Footer = () => {
           <div className="py-4 md:px-4 lg:px-0 border-y border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center container mx-auto gap-y-4 md:gap-y-0 py-4 md:py-0">
                 <span className="text-[#FBF7F3]/50 text-xs font-tilda-sans font-light">
-                    Copyright ©2024 Firuza Nail Studio. Все права защищены
+                    Copyright ©2025 Firuza Nail Studio. Все права защищены
                 </span>
                 <Link href="#" className="text-[#FBF7F3]/50 text-xs hover:text-[#D4B899] transition-colors font-tilda-sans font-light">
                     Политика использования файлов cookie

@@ -122,7 +122,7 @@ const MastersSection = () => {
   return (
     <section className="pt-12 pb-[96px] md:py-20 max-w-[1280px] mx-auto px-5 lg:px-0">
       <div className="flex flex-col gap-2 mb-6 md:mb-9">
-        <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
+        <h6 className="text-primary font-tilda-sans text-[14px] uppercase">
           Доверьте свою красоту профессионалам
         </h6>
         <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
@@ -135,7 +135,7 @@ const MastersSection = () => {
           <button
             key={salon}
             onClick={() => setActiveSalon(salon)}
-            className={`px-12 py-2.5 border border-black hover:opacity-80 ${
+            className={`px-12 py-2.5 border border-black hover:opacity-80 text-14px  font-tilda-sans font-light ${
               activeSalon === salon 
                 ? 'bg-black text-white' 
                 : 'bg-transparent text-black'
@@ -214,6 +214,18 @@ const MastersSection = () => {
             ))}
           </div>
         </div>
+        <div className="w-full mt-6 md:hidden">
+            <div className="flex items-center h-1">
+              <div 
+                className="bg-[#6A7B61] h-full transition-all duration-200 ease-out"
+                style={{ width: `${Math.max(12.5, scrollProgress * 100)}%` }}
+              />
+              <div 
+                className="bg-primary/10 h-full transition-all duration-200 ease-out"
+                style={{ width: `${100 - (scrollProgress * 100)}%` }}
+              />
+            </div>
+          </div>
       </div>
     </section>
   )
