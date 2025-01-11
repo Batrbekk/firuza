@@ -148,7 +148,7 @@ export default function Home() {
     return (
       <main>
         <section className="relative overflow-x-hidden">
-          <Header/>
+          <Header />
           <img
             src="/images/bg-main.png"
             alt="team"
@@ -157,24 +157,24 @@ export default function Home() {
           <img
             src="/images/bg-main-layer.png"
             alt="team"
-            className="-z-5 absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0 hidden md:block"
+            className="-z-[5] absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0 hidden md:block"
           />
           <img
             ref={leftHandRef}
             src="/images/left.png"
             alt="left"
             id="left-hand"
-            className='absolute -z-10 block'
+            className='absolute -z-[10] block'
           />
           <img
             ref={rightHandRef}
             src="/images/right.png"
             alt="right"
             id="right-hand"
-            className='absolute -z-10 block'
+            className='absolute -z-[10] block'
           />
           <div
-            className='px-5 md:px-0 pt-[188px] pb-[168px] md:py-[120px] flex flex-col items-center gap-y-[175px] md:gap-y-20'>
+            className='px-5 md:px-0 pt-[188px] pb-[168px] md:py-[120px] flex flex-col items-center gap-y-[175px] md:gap-y-20 z-50'>
             <h1
               ref={titleRef}
               className="text-white text-[28px] lg:text-[64px] font-tenor-sans uppercase text-center max-w-[320px] lg:max-w-[1392px]"
@@ -185,10 +185,10 @@ export default function Home() {
               ref={buttonsRef}
               className='flex items-center justify-center flex-col md:flex-row gap-5 w-full'
             >
-              <Button className="w-full md:w-[240px]">
+              <Button className="w-full md:w-[240px] hover:bg-white hover:text-primary">
                 Записаться
               </Button>
-              <Button variant='outline' className="w-full md:w-[240px] text-white border-white">
+              <Button variant='outline' className="w-full md:w-[240px] text-white border-white hover:text-primary hover:border-primary">
                 посмотреть цены
               </Button>
             </div>

@@ -9,11 +9,11 @@ import Accordion from './Accordion';
 
 export default function Header() {
   return (
-    <header className="w-full">
+    <header className="w-full z-100">
       <div className="flex items-center px-5 py-6 justify-between md:justify-center md:px-0 md:py-[28px] border-b border-white/10 relative">
-        <div className="relative w-[88px] h-[38px] md:w-[148px] md:h-[67px]">
+        <Link href="/" className="relative w-[88px] h-[38px] md:w-[148px] md:h-[67px]">
           <Image src={logo} alt="logo" fill />
-        </div>
+        </Link>
         <div className="absolute md:left-[95px] hidden md:flex items-center gap-x-2.5">
           <Link href="#" target="_blank" className="flex items-center justify-center relative w-10 h-10">
             <Image src={Vk} alt="social-icon" fill />
