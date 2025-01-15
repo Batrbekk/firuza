@@ -10,8 +10,6 @@ import TabsSection from "../components/TabsSection";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Blog() {
 	const [isChecked, setIsChecked] = useState(false);
 	const [isChecked2, setIsChecked2] = useState(false);
@@ -19,8 +17,14 @@ export default function Blog() {
 	const contentRef = useRef(null);
 	const imageRef = useRef(null);
 
+	const [mounted, setMounted] = useState(false);
+
 	useEffect(() => {
-		gsap.from(contentRef.current, {
+		setMounted(true);
+
+		if (mounted) {
+			gsap.registerPlugin(ScrollTrigger);
+			gsap.from(contentRef.current, {
 				x: -100,
 				opacity: 0,
 				duration: 1,
@@ -28,18 +32,26 @@ export default function Blog() {
 						trigger: contentRef.current,
 						start: 'top 80%',
 				}
-		});
+			});
 
-		gsap.from(imageRef.current, {
-				x: 100,
-				opacity: 0,
-				duration: 1,
-				scrollTrigger: {
-						trigger: imageRef.current,
-						start: 'top 80%',
-				}
-		});
-}, []);
+			gsap.from(imageRef.current, {
+					x: 100,
+					opacity: 0,
+					duration: 1,
+					scrollTrigger: {
+							trigger: imageRef.current,
+							start: 'top 80%',
+					}
+			});
+		}
+
+		return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill())
+      gsap.killTweensOf("*")
+    }
+	}, [mounted]);
+
+	if (!mounted) return null
 
 	const articles = [
 		{

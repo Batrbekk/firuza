@@ -185,10 +185,24 @@ export default function Home() {
               ref={buttonsRef}
               className='flex items-center justify-center flex-col md:flex-row gap-5 w-full'
             >
-              <Button className="w-full md:w-[240px] hover:bg-white hover:text-primary">
+              <Button 
+                onClick={() => {
+                  window.open('https://n1333420.yclients.com/select-city/157/select-branch?o=', '_blank')
+                }}
+                className="w-full md:w-[240px] hover:bg-white hover:text-primary"
+              >
                 Записаться
               </Button>
-              <Button variant='outline' className="w-full md:w-[240px] text-white border-white hover:text-primary hover:border-primary">
+              <Button 
+                variant='outline' 
+                className="w-full md:w-[240px] text-white border-white hover:text-primary hover:border-primary"
+                onClick={() => {
+                  document.getElementById('prices')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  })
+                }}
+              >
                 посмотреть цены
               </Button>
             </div>
@@ -285,7 +299,9 @@ export default function Home() {
           </Dropdown>
         </div>
         <section
-          className="px-5 lg:px-0 py-12 lg:py-20 flex flex-col md:border-dashed md:border border-black/10 bg-[#fcfcfc] md:mg-white">
+          id="prices"
+          className="px-5 lg:px-0 py-12 lg:py-20 flex flex-col md:border-dashed md:border border-black/10 bg-[#fcfcfc] md:mg-white"
+        >
           <h3 className='text-center text-[28px] md:text-[44px] font-tenor-sans uppercase'>
             УСЛУГИ И ЦЕНЫ
           </h3>

@@ -28,18 +28,18 @@ export default function Header() {
         <div className="md:max-w-[720px] lg:max-w-[1020px] mx-auto flex items-center justify-between w-full">
           <Accordion text="Салоны">
             <div className="flex items-center justify-between w-full">
-              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+              <Link href="/savin" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
                 Салон на Саввинском шоссе
               </Link>
-              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+              <Link href="/opolch" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
                 Салон на Народного ополчения
               </Link>
             </div>
           </Accordion>
-          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+          <Link href="/team" className="text-white font-bold font-tilda-sans text-sm uppercase">
             Наша команда
           </Link>
-          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+          <Link href="/promotion" className="text-white font-bold font-tilda-sans text-sm uppercase">
             Акции
           </Link>
           <Accordion text="Обучение">
@@ -55,10 +55,10 @@ export default function Header() {
               </Link>
             </div>
           </Accordion>
-          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+          <Link href="/blog" className="text-white font-bold font-tilda-sans text-sm uppercase">
             Блог
           </Link>
-          <Link href="/" className="text-white font-bold font-tilda-sans text-sm uppercase">
+          <Link href="/contact" className="text-white font-bold font-tilda-sans text-sm uppercase">
             Контакты
           </Link>
         </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "../components/Footer";
@@ -8,57 +8,68 @@ import Header from "../components/Header";
 import TextReveal from "../components/TextReveal";
 import ContactForm from "../components/ContactForm";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Contact() {
-    const firstInfoRef = useRef(null);
+		const [mounted, setMounted] = useState(false);
+
+		const firstInfoRef = useRef(null);
     const firstMapRef = useRef(null);
     const secondInfoRef = useRef(null);
     const secondMapRef = useRef(null);
+	
+		useEffect(() => {
+			setMounted(true);
 
-    useEffect(() => {
-        // Первый блок
+			if (mounted) {
+				gsap.registerPlugin(ScrollTrigger);
+
+				// Первый блок
         gsap.from(firstInfoRef.current, {
-            x: -100,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: firstInfoRef.current,
-                start: 'top 80%',
-            }
-        });
+					x: -100,
+					opacity: 0,
+					duration: 1,
+					scrollTrigger: {
+							trigger: firstInfoRef.current,
+							start: 'top 80%',
+					}
+				});
 
-        gsap.from(firstMapRef.current, {
-            x: 100,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: firstMapRef.current,
-                start: 'top 80%',
-            }
-        });
+				gsap.from(firstMapRef.current, {
+					x: 100,
+					opacity: 0,
+					duration: 1,
+					scrollTrigger: {
+							trigger: firstMapRef.current,
+							start: 'top 80%',
+					}
+				});
 
-        // Второй блок
-        gsap.from(secondInfoRef.current, {
-            x: 100,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: secondInfoRef.current,
-                start: 'top 80%',
-            }
-        });
+				// Второй блок
+				gsap.from(secondInfoRef.current, {
+						x: 100,
+						opacity: 0,
+						duration: 1,
+						scrollTrigger: {
+								trigger: secondInfoRef.current,
+								start: 'top 80%',
+						}
+				});
 
-        gsap.from(secondMapRef.current, {
-            x: -100,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: secondMapRef.current,
-                start: 'top 80%',
-            }
-        });
-    }, []);
+				gsap.from(secondMapRef.current, {
+						x: -100,
+						opacity: 0,
+						duration: 1,
+						scrollTrigger: {
+								trigger: secondMapRef.current,
+								start: 'top 80%',
+						}
+				});
+			}
+
+			return () => {
+				ScrollTrigger.getAll().forEach(t => t.kill())
+				gsap.killTweensOf("*")
+			}
+		}, [mounted]);
 
     return (
         <main>
