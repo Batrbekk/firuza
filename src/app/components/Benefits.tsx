@@ -120,7 +120,7 @@ export default function Benefits() {
   ]
 
   return (
-    <section className="bg-[#292929] px-5 lg:px-0 py-12 md:py-[130px]">
+    <section className="bg-[#292929] px-5 lg:px-0 py-12 md:py-[130px] block-p">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-[60px]">
         {benefits.map((benefit, index) => (
           <Benefit key={index} {...benefit} />

@@ -10,6 +10,8 @@ import Footer from "../components/Footer";
 export default function Team() {
 	const imagesContainerRef = useRef<HTMLDivElement>(null);
 	const imagesRef = useRef<HTMLImageElement[]>([]);
+	const bgRef = useRef<HTMLImageElement>(null);
+	const firstSectionRef = useRef<HTMLElement>(null);
 	
 	const [mounted, setMounted] = useState(false);
 
@@ -36,12 +38,25 @@ export default function Team() {
 						});
 				}
 			});
-		}
 
-		return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
-      gsap.killTweensOf("*")
-    }
+			const parallaxAnimation = gsap.to(bgRef.current, {
+				yPercent: 20,
+				ease: "none",
+				scrollTrigger: {
+					trigger: firstSectionRef.current,
+					start: "top top",
+					end: "bottom top",
+					scrub: 1,
+					invalidateOnRefresh: true
+				}
+			});
+
+			return () => {
+				parallaxAnimation.kill();
+				ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+				gsap.killTweensOf("*");
+			}
+		}
 	}, [mounted]);
 
 	const addToRefs = (el: HTMLImageElement | null) => {
@@ -54,12 +69,13 @@ export default function Team() {
 
 	return (
 		<main>
-			<section className="relative">
+			<section ref={firstSectionRef} className="relative overflow-hidden">
 				<Header />
 				<img 
+					ref={bgRef}
 					src="/images/back-team.png" 
 					alt="team" 
-					className="-z-10 absolute object-cover top-0 left-0 w-full h-full object-center" 
+					className="-z-10 absolute object-cover top-0 left-0 w-full h-full object-center will-change-transform" 
 				/>
 				<div className="pt-[62px] md:pt-20 pb-24 md:pb-52 px-5 md:px-0 flex flex-col items-center gap-y-[36px] md:gap-y-4 mx-auto md:max-w-[760px] text-center">
 						<TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px]">
@@ -72,7 +88,7 @@ export default function Team() {
 						</p>
 				</div>
 			</section>
-			<section ref={imagesContainerRef} className="max-w-[1280px] mx-auto px-5 lg:px-0 py-24 md:py-12 flex flex-col gap-y-6">
+			<section ref={imagesContainerRef} className="max-w-[1280px] mx-auto px-5 lg:px-0 py-24 md:py-12 flex flex-col gap-y-6 block-p">
 				<div className="flex flex-col lg:flex-row items-start md:items-center justify-between w-full">
 					<div className="flex flex-col gap-y-6 w-full lg:max-w-[630px]">
 						<div className="flex flex-col gap-y-2">

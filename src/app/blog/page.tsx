@@ -225,7 +225,7 @@ export default function Blog() {
 		<main>
 			<section className="bg-grey">
 					<Header />
-					<div className="max-w-[1280px] mx-auto px-5 lg:px-0 pt-0 pb-24 lg:py-20 flex items-center justify-between flex-col-reverse lg:flex-row gap-y-20">
+					<div className="max-w-[1280px] mx-auto px-5 lg:px-0 pt-0 pb-24 lg:py-20 flex items-center justify-between flex-col-reverse lg:flex-row gap-y-20 block-p">
 						<div ref={contentRef} className="flex flex-col gap-y-6 max-w-[645px] w-full">
 							<div className="flex flex-col items-center lg:items-start gap-y-2">
 								<div className="flex items-center gap-x-2">
@@ -251,7 +251,7 @@ export default function Blog() {
 						</div>
 					</div>
 			</section>
-			<section className="max-w-[1280px] mx-auto pb-12 md:py-20 px-5 lg:px-0">
+			<section className="max-w-[1280px] mx-auto pb-12 md:py-20 px-5 lg:px-0 block-p">
 				<TabsSection 
 					articles={articles} 
 					articles2={articles2} 
@@ -259,7 +259,7 @@ export default function Blog() {
 					articles4={articles4} 
 				/>
 			</section>
-			<section className="max-w-[1020px] mx-auto pt-12 pb-24 md:py-20 flex flex-col gap-y-6 px-5 lg:px-0">
+			<section className="max-w-[1020px] mx-auto pt-12 pb-24 md:py-20 flex flex-col gap-y-6 px-5 lg:px-0 block-p">
 				<div className="flex flex-col items-center text-center gap-y-2">
 					<h3 className="font-tenor-sans text-[28px] md:text-[38px]">
 						СЛЕДИТЕ ЗА НОВОСТЯМИ

@@ -22,13 +22,17 @@ export default function Menu() {
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
+
+    const handleMenuClick = () => {
+        setIsOpen(!isOpen);
+    };
     
     return (
         <>
             <button 
+                onClick={handleMenuClick}
                 id="menu-button"
                 className={`w-[36px] flex flex-col items-end gap-y-1 md:hidden z-50 relative ${isOpen ? 'menu-open' : ''}`}
-                onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="burger-line w-full h-[2px] bg-white rounded-full" />
                 <div className="burger-line w-[32px] h-[2px] bg-white rounded-full" />

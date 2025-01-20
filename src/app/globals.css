@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add smooth scroll behavior to html */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -75,7 +80,13 @@ body {
     padding-right: 95px;
     padding-left: 95px;
   }
+  #study-cards {
+    max-width: 100%!important;
+    padding-right: 94px;
+    padding-left: 94px;
+  }
 }
+
 
 @media (min-width: 1000px) and (max-width: 1441px) {
   #about-section {
@@ -92,3 +103,130 @@ body {
     padding-right: 42px;
   }
 }
+
+.header-row>a,
+.header-row>div>button p {
+    position: relative;
+}
+.header-row>a::after,
+.header-row>div>button p::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .36s cubic-bezier(.57,.01,.29,.99);
+}
+.header-row>a:hover::after,
+.header-row>div:hover>button p::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+@media (max-width: 1540px) {
+    #about-section {
+      gap: 20px;
+    }
+}
+@media (max-width: 1385px) {
+    #about-section>.gap-x-4 {
+        column-gap: 0.5em;
+    }
+    #about-section>.gap-x-4>.flex {
+        row-gap: 0.5em;
+    }
+    #about-section>.gap-x-4>.flex>.w-\[242px\] {
+        width: 16.5vw;
+    }
+    #about-section>.gap-x-4>.flex>.h-\[371px\] {
+        height: 26.788vw;
+    }
+    #about-section>.gap-x-4>.flex>.h-\[318px\] {
+        height: 22.961vw;
+    }
+    #about-section>.gap-x-4>.flex>.h-\[447px\] {
+        height: 32.275vw;
+    }
+    #about-section>.gap-x-4>.flex>.h-\[242px\] {
+        height: 17.473vw;
+    }
+    #about-section>.gap-x-4>.flex>.h-\[242px\] {
+        height: 17.473vw;
+    }
+    #about-section>.gap-x-4>.flex>.h-\[343px\] {
+        height: 24.766vw;
+    }
+    #about-section>.gap-x-4>.flex>.h-\[346px\] {
+        height: 24.982vw;
+    }
+
+    
+}
+@media (max-width: 1385px) and (min-width: 1024px) {
+    #about-desc>.flex.items-center.flex-col {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #prices>div.flex {
+        column-gap: 2em;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .block-p {
+        padding-left: 20px!important;
+        padding-right: 20px!important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1580px) {
+  .study-title {
+    max-width: 826px;
+  }
+  .study-desc {
+    flex-direction: column!important;
+    gap: 32px;
+    padding-left: 64px!important;
+    padding-right: 64px!important;
+    div {
+      max-width: 100%!important;
+    }
+  }
+  #study-cards {
+    padding-left: 8px!important;
+    padding-right: 8px!important;
+  }
+  .study-cards-wrapper {
+    flex-wrap: wrap!important;
+    .study-card {
+      max-width: 480px!important;
+    }
+  }
+
+  #study-certificate {
+    padding-left: 32px!important;
+    padding-right: 32px!important;
+  }
+
+  .certificate-wrapper {
+    width: 100%!important;
+    flex-wrap: wrap!important;
+    justify-content: center!important;
+    div {
+      width: 470px!important;
+    }
+  }
+
+  #study-start-desc {
+    flex-direction: column!important;
+    padding-left: 64px!important;
+    padding-right: 64px!important;
+    div {
+      max-width: 100%!important;
+      justify-content: center!important;
+    }
+  }
+}
+

@@ -107,7 +107,7 @@ export default function Rules() {
 						<div className="flex items-start gap-x-[150px]">
 							<div 
 								ref={firstContentRef}
-								className="flex flex-col gap-y-6 w-full lg:max-w-[630px] pt-8 pb-12 lg:pt-0 lg:pb-0"
+								className="flex flex-col gap-y-6 w-full pt-8 pb-12 lg:pt-0 lg:pb-0"
 							>
 								<div className="flex flex-col gap-y-2">
 									<h6 className="text-primary font-medium font-tilda-sans text-sm uppercase">Правила</h6>
@@ -158,32 +158,13 @@ export default function Rules() {
 									</p>
 								</div>
 							</div>
-							<div 
-								ref={firstImageRef}
-								className="w-[500px] h-[750px] hidden lg:block relative"
-							>
-								<img 
-									src="/images/rules/1.png" 
-									alt="rules" 
-									className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
-								/>
-							</div>
 						</div>
 						<div 
 							className="flex flex-col lg:flex-row items-start gap-x-[150px] gap-y-6 py-12 lg:py-0"
 						>
 							<div 
-								className="lg:w-[565px] lg:h-[750px] w-full h-[480px] relative"
-							>
-								<img 
-									src="/images/rules/2.png" 
-									alt="rules" 
-									className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
-								/>
-							</div>
-							<div 
 								ref={secondContentRef}
-								className="flex flex-col gap-y-6 w-full lg:max-w-[630px]"
+								className="flex flex-col gap-y-6 w-full"
 							>
 								<div className="flex flex-col gap-y-2">
 										<h6 className="font-tilda-sans font-bold text-[14px] uppercase">5.Условия оказания услуг:</h6>

@@ -41,7 +41,7 @@ export default function TabsSection({
     gsap.to('.articles-grid', {
       opacity: 0,
       y: 20,
-      duration: 0.3,
+      duration: 0.1,
       onComplete: () => {
         setActiveTab(tabId);
         
@@ -66,7 +66,7 @@ export default function TabsSection({
         gsap.to('.articles-grid', {
           opacity: 1,
           y: 0,
-          duration: 0.3
+          duration: 0.1
         });
       }
     });

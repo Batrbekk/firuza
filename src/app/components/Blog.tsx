@@ -136,7 +136,7 @@ const Blog = () => {
   }, [emblaApi, onScroll])
 
   return (
-    <section id="blog-section" className="pt-[60px] pb-[52px] md:py-20 lg:max-w-[1540px] mx-auto px-5 lg:px-0">
+    <section id="blog-section" className="pt-[60px] pb-[52px] md:py-20 lg:max-w-[1540px] mx-auto px-5 lg:px-0 block-p">
       <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-9 max-w-[1280px] mx-auto gap-y-5">
         <div className="flex flex-col gap-2">
           <h6 className="text-primary text-[14px] font-tilda-sans font-bold uppercase">

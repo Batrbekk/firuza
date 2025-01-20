@@ -6,22 +6,26 @@ import { cn } from '@/lib/utils'
 interface AccordionProps {
   text: string
   children: ReactNode
+  id: string
+  isOpen: boolean
+  onToggle: () => void
   titleClassName?: string
 }
 
 export default function Accordion({ 
   text, 
   children, 
+  id,
+  isOpen,
+  onToggle,
   titleClassName 
 }: AccordionProps) {
-  const [isOpen, setIsOpen] = useState(false)
-
   return (
     <div>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onToggle}
         className={cn(
-          "flex items-center gap-2 uppercase font-tilda-sans font-bold text-sm",
+          "py-4 flex items-center gap-2 uppercase font-tilda-sans font-bold text-sm",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
           titleClassName,
           isOpen ? 'text-white/50' : 'text-white'

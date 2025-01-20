@@ -120,7 +120,7 @@ const MastersSection = () => {
   }, [emblaApi, onScroll])
 
   return (
-    <section className="pt-12 pb-[96px] md:py-20 max-w-[1280px] mx-auto px-5 lg:px-0">
+    <section className="pt-12 pb-[96px] md:py-20 max-w-[1280px] mx-auto px-5 lg:px-0 block-p">
       <div className="flex flex-col gap-2 mb-6 md:mb-9">
         <h6 className="text-primary font-tilda-sans text-[14px] uppercase">
           Доверьте свою красоту профессионалам

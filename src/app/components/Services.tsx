@@ -13,7 +13,7 @@ function ServiceItem({ name, price }: ServiceItemProps) {
       <span className="text-black font-tilda-sans text-[18px] md:text-[26px] w-fit md:max-w-[370px]">
         {name}
       </span>
-      <div className="border-b border-dashed border-primary flex-grow mx-2" />
+      <div className="border-b border-dashed border-primary flex-grow mx-2 mt-2" />
       <div className="flex items-center gap-1 whitespace-nowrap">
         <span className="text-primary font-tilda-sans text-[18px] md:text-[26px]">от {price} ₽</span>
       </div>
@@ -22,14 +22,15 @@ function ServiceItem({ name, price }: ServiceItemProps) {
 }
 
 interface ServiceCategoryProps {
+  id: string;
   title: string;
   services: ServiceItemProps[];
   className?: string;
 }
 
-function ServiceCategory({ title, services, className }: ServiceCategoryProps) {
+function ServiceCategory({ id, title, services, className }: ServiceCategoryProps) {
   return (
-    <div className={cn("flex flex-col gap-[18px] md:gap-9 w-full", className)}>
+    <div id={id} className={cn("flex flex-col gap-[18px] md:gap-9 w-full", className)}>
       <h3 className="text-black text-[24px] md:text-[38px] font-tenor-sans text-center">
         {title}
       </h3>
@@ -45,6 +46,7 @@ function ServiceCategory({ title, services, className }: ServiceCategoryProps) {
 export default function Services() {
      const leftColumnCategories = [
         {
+          id: "manicure",
           title: "Маникюр",
           services: [
             { name: "Стандартный комплекс", price: 1900 },
@@ -56,6 +58,7 @@ export default function Services() {
           ]
         },
         {
+          id: "pedicure",
           title: "Педикюр",
           services: [
             { name: "Полный педикюр Golden Trace / Smart", price: 3000 },
@@ -63,6 +66,7 @@ export default function Services() {
           ]
         },
         {
+          id: "nails",
           title: "Наращивание ногтей",
           services: [
             { name: "Наращивание S/M/L", price: 4000 },
@@ -74,6 +78,7 @@ export default function Services() {
 
       const rightColumnCategories = [
         {
+          id: "eyelashes",
           title: "Наращивание ресниц",
           services: [
             { name: "Классика 1D", price: 2400 },
@@ -84,6 +89,7 @@ export default function Services() {
           className: "hidden md:flex"
         },
         {
+          id: "eyebrows",
           title: "Брови",
           services: [
             { name: "Комплекс ДУ + коррекция + окрашивание", price: 2000 },
@@ -92,6 +98,7 @@ export default function Services() {
           ]
         },
         {
+          id: "permanent-makeup",
           title: "Перманентный макияж",
           services: [
             { name: "Перманентный макияж бровей", price: 8000 },
@@ -106,7 +113,10 @@ export default function Services() {
     <div className="max-w-[1280px] w-full mx-auto flex lg:items-start justify-between lg:flex-row flex-col items-center gap-y-9 mt-6 mb-9 md:mt-12 md:mb-[60px]">
       <div className="flex flex-col gap-y-9 md:gap-y-[60px] max-w-[580px] w-full">
         {leftColumnCategories.map((category, index) => (
-          <ServiceCategory key={`left-${index}`} {...category} />
+          <ServiceCategory 
+            key={`left-${index}`} 
+            {...category} 
+          />
         ))}
       </div>
       <div className="flex flex-col gap-y-9 md:gap-y-[60px] max-w-[580px] w-full">

@@ -108,7 +108,7 @@ export default function Promotions() {
   ]
 
   return (
-    <section className="py-12 md:py-20 md:border-b border-black/10">
+    <section className="py-12 md:py-20 md:border-b border-black/10 block-p">
       <div className="flex flex-col gap-[36px] md:gap-[60px] max-w-[1280px] mx-auto">
         <div className="flex flex-col gap-2 text-center mx-auto">
           <h6 className="text-primary font-bold text-[14px] font-tilda-sans uppercase">

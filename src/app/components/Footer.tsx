@@ -5,34 +5,97 @@ import Link from 'next/link'
 
 const Footer = () => {
   const menuItems = [
-    'Салоны',
-    'наша команда', 
-    'подарочные карты',
-    'акции',
-    'обучение',
-    'блог',
-    'условия оказания услуг'
-  ]
+    {
+      label: 'Салоны',
+      link: '/'
+    },
+    {
+      label: 'наша команда',
+      link: '/team'
+    },
+    {
+      label: 'подарочные карты',
+      link: '#'
+    },
+    {
+      label: 'акции',
+      link: '/promotion'
+    },
+    {
+      label: 'обучение',
+      link: '/study'
+    },
+    {
+      label: 'блог',
+      link: '/blog'
+    },
+    {
+      label: 'условия оказания услуг',
+      link: '/rules'
+    }
+  ];
 
   const services = [
-    'маникюр',
-    'педикюр', 
-    'наращивание ногтей',
-    'перманентный макияж',
-    'брови'
-  ]
+    {
+      label: 'маникюр',
+      link: '/#manicure'
+    },
+    {
+      label: 'педикюр',
+      link: '/#pedicure'
+    },
+    {
+      label: 'наращивание ногтей',
+      link: '/#nails'
+    },
+    {
+      label: 'перманентный макияж',
+      link: '/#permanent-makeup'
+    },
+    {
+      label: 'брови',
+      link: '/#eyebrows'
+    }
+  ];
 
   const legalLinks = [
-    'Политика использования файлов cookie',
-    'Политика обработки персональных данных',
-    'Согласие на обработку персональных данных',
-    'Согласие на получение информационной и рекламной рассылки',
-    'Условия оказания услуг',
-    'Уведомление об авторских правах',
-    'Публичный договор-оферта оказания услуг ногтевого сервиса',
-    'Публичная оферта оказания услуг по обучению',
-    'Правила предоставления скидок, бонусных и подарочных карт'
-  ]
+    {
+      label: 'Политика использования файлов cookie',
+      link: '#'
+    },
+    {
+      label: 'Политика обработки персональных данных',
+      link: '#'
+    },
+    {
+      label: 'Согласие на обработку персональных данных',
+      link: '#'
+    },
+    {
+      label: 'Согласие на получение информационной и рекламной рассылки',
+      link: '#'
+    },
+    {
+      label: 'Условия оказания услуг',
+      link: '#'
+    },
+    {
+      label: 'Уведомление об авторских правах',
+      link: '#'
+    },
+    {
+      label: 'Публичный договор-оферта оказания услуг ногтевого сервиса',
+      link: '#'
+    },
+    {
+      label: 'Публичная оферта оказания услуг по обучению',
+      link: '#'
+    },
+    {
+      label: 'Правила предоставления скидок, бонусных и подарочных карт',
+      link: '#'
+    }
+  ];
 
   return (
     <footer className="bg-[#292929] px-5 lg:px-0 pt-12 md:pt-20 pb-6">
@@ -144,10 +207,10 @@ const Footer = () => {
               {menuItems.map((item, index) => (
                 <Link 
                   key={index}
-                  href="#"
+                  href={item.link}
                   className="text-white text-sm hover:text-secondary font-tilda-sans font-light transition-colors uppercase"
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
             </div>
@@ -157,10 +220,10 @@ const Footer = () => {
               {services.map((service, index) => (
                 <Link
                   key={index}
-                  href="#"
+                  href={service.link}
                   className="text-white text-sm hover:text-secondary font-tilda-sans font-light transition-colors uppercase"
                 >
-                  {service}
+                  {service.label}
                 </Link>
               ))}
             </div>
@@ -168,15 +231,17 @@ const Footer = () => {
 
           {/* Правовая информация */}
           <div className="flex flex-col gap-4 w-full lg:max-w-[370px] order-4">
-            <h3 className="text-lightGrey font-tilda-sans font-bold uppercase  text-center md:text-left text-sm">Правовая информация:</h3>
+            <h3 className="text-lightGrey font-tilda-sans font-bold uppercase text-center md:text-left text-sm">
+              Правовая информация:
+            </h3>
             <div className="flex flex-col gap-2">
               {legalLinks.map((link, index) => (
                 <Link
                   key={index}
-                  href="#"
+                  href={link.link}
                   className="text-white/70 text-sm hover:text-secondary transition-colors font-tilda-sans font-light"
                 >
-                  {link}
+                  {link.label}
                 </Link>
               ))}
             </div>

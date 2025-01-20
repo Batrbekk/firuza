@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from '../../../public/images/logo.svg';
@@ -8,6 +9,12 @@ import Menu from './Menu';
 import Accordion from './Accordion';
 
 export default function Header() {
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+
+  const handleAccordionToggle = (id: string) => {
+    setOpenAccordion(openAccordion === id ? null : id);
+  };
+
   return (
     <header className="w-full z-100">
       <div className="flex items-center px-5 py-6 justify-between md:justify-center md:px-0 md:py-[28px] border-b border-white/10 relative">
@@ -24,9 +31,14 @@ export default function Header() {
         </div>
         <Menu />
       </div>
-      <div className="py-4 border-b border-white/10 hidden md:flex justify-center relative">
-        <div className="md:max-w-[720px] lg:max-w-[1020px] mx-auto flex items-center justify-between w-full">
-          <Accordion text="Салоны">
+      <div className="border-b border-white/10 hidden md:flex justify-center relative">
+        <div className="md:max-w-[720px] lg:max-w-[1020px] mx-auto flex items-center justify-between w-full header-row">
+          <Accordion 
+            text="Салоны" 
+            id="salons"
+            isOpen={openAccordion === 'salons'}
+            onToggle={() => handleAccordionToggle('salons')}
+          >
             <div className="flex items-center justify-between w-full">
               <Link href="/savin" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
                 Салон на Саввинском шоссе
@@ -42,15 +54,20 @@ export default function Header() {
           <Link href="/promotion" className="text-white font-bold font-tilda-sans text-sm uppercase">
             Акции
           </Link>
-          <Accordion text="Обучение">
+          <Accordion 
+            text="Обучение" 
+            id="education"
+            isOpen={openAccordion === 'education'}
+            onToggle={() => handleAccordionToggle('education')}
+          >
             <div className="flex items-center justify-between w-full">
-              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+              <Link href="/study#study-cards" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
                 Программа обучения
               </Link>
-              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+              <Link href="/study#study-certificate" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
                 Сертификаты
               </Link>
-              <Link href="/" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
+              <Link href="/study#study-works" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
                 Работы учеников
               </Link>
             </div>

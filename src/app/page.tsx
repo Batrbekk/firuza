@@ -2,7 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from "./components/Header";
+import TextReveal from "./components/TextReveal";
 import Button from "./components/Button";
 import Dropdown from './components/Dropdown';
 import Services from './components/Services';
@@ -15,51 +17,56 @@ import Promotions from './components/Promotions';
 import SalonGallery from './components/SalonGallery';
 import Benefits from './components/Benefits';
 import Blog from './components/Blog';
+
+// Регистрируем плагин ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
     const leftHandRef = useRef(null);
     const rightHandRef = useRef(null);
     const titleRef = useRef(null);
     const buttonsRef = useRef(null);
+    const bgRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
         const tl = gsap.timeline();
-        const isMobile = window.innerWidth < 768; // md breakpoint
+        const isMobile = window.innerWidth < 768;
 
         if (isMobile) {
             // Мобильная версия
             gsap.set(leftHandRef.current, {
-                y: -100,
+                y: -50,
                 opacity: 0,
                 rotation: -10,
                 top: -40,
                 left: 0
             });
             gsap.set(rightHandRef.current, {
-                y: 100,
+                y: 50,
                 opacity: 0,
                 rotation: -16,
                 bottom: 200,
                 right: 0
             });
-            gsap.set(titleRef.current, { opacity: 0, y: 50 });
-            gsap.set(buttonsRef.current, { opacity: 0, y: 30 });
+            gsap.set(titleRef.current, { opacity: 0, y: 30 });
+            gsap.set(buttonsRef.current, { opacity: 0, y: 20 });
 
             tl.to([leftHandRef.current, rightHandRef.current], {
                 y: 0,
                 opacity: 1,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out"
             })
             .to(titleRef.current, {
                 opacity: 1,
                 y: 0,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out"
             })
             .to(buttonsRef.current, {
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 0.4,
                 ease: "power2.out"
             });
         } else {
@@ -68,35 +75,35 @@ export default function Home() {
             const startXRight = window.innerWidth <= 1640 ? 120 : 0;
 
             gsap.set(leftHandRef.current, {
-                x: `${startXLeft - 100}%`,
+                x: `${startXLeft - 50}%`,
                 rotation: 0,
                 top: 0,
                 left: 0
             });
             gsap.set(rightHandRef.current, {
-                x: `${startXRight + 100}%`,
+                x: `${startXRight + 50}%`,
                 rotation: 0,
                 bottom: 0,
                 right: 0
             });
-            gsap.set(titleRef.current, { opacity: 0, y: 50 });
-            gsap.set(buttonsRef.current, { opacity: 0, y: 30 });
+            gsap.set(titleRef.current, { opacity: 0, y: 30 });
+            gsap.set(buttonsRef.current, { opacity: 0, y: 20 });
 
             tl.to([leftHandRef.current, rightHandRef.current], {
                 x: (index) => index === 0 ? startXLeft : startXRight,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out"
             })
             .to(titleRef.current, {
                 opacity: 1,
                 y: 0,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out"
             })
             .to(buttonsRef.current, {
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 0.4,
                 ease: "power2.out"
             });
         }
@@ -145,14 +152,34 @@ export default function Home() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {
+        const parallaxAnimation = gsap.to(bgRef.current, {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "section",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1,
+                invalidateOnRefresh: true
+            }
+        });
+
+        return () => {
+            parallaxAnimation.kill();
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    }, []);
+
     return (
       <main>
-        <section className="relative overflow-x-hidden">
+        <section className="relative overflow-hidden">
           <Header />
           <img
+            ref={bgRef}
             src="/images/bg-main.png"
             alt="team"
-            className="-z-10 absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0"
+            className="-z-10 absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0 will-change-transform"
           />
           <img
             src="/images/bg-main-layer.png"
@@ -302,9 +329,9 @@ export default function Home() {
           id="prices"
           className="px-5 lg:px-0 py-12 lg:py-20 flex flex-col md:border-dashed md:border border-black/10 bg-[#fcfcfc] md:mg-white"
         >
-          <h3 className='text-center text-[28px] md:text-[44px] font-tenor-sans uppercase'>
+          <TextReveal className='text-center text-[28px] md:text-[44px] font-tenor-sans uppercase'>
             УСЛУГИ И ЦЕНЫ
-          </h3>
+          </TextReveal>
           <Services/>
           <Button className='w-full md:w-[240px] mx-auto'>
             полный прайс-лист

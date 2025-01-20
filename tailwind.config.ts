@@ -17,7 +17,8 @@ export default {
         primary: "#6A7B61",
         secondary: "#D5B899",
         lightGrey: "#E9E9E9",
-        grey: "#292929"
+        grey: "#292929",
+        primaryLight: "#A2B19A"
       },
       keyframes: {
         'fade-in-top': {

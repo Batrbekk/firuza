@@ -15,70 +15,69 @@ export default function Contact() {
     const firstMapRef = useRef(null);
     const secondInfoRef = useRef(null);
     const secondMapRef = useRef(null);
-	
-		useEffect(() => {
-			setMounted(true);
+		const bgRef = useRef<HTMLImageElement>(null);
+    const firstSectionRef = useRef<HTMLElement>(null);
 
-			if (mounted) {
-				gsap.registerPlugin(ScrollTrigger);
+    useEffect(() => {
+        setMounted(true);
 
-				// Первый блок
-        gsap.from(firstInfoRef.current, {
-					x: -100,
-					opacity: 0,
-					duration: 1,
-					scrollTrigger: {
-							trigger: firstInfoRef.current,
-							start: 'top 80%',
-					}
-				});
+        if (mounted) {
+            gsap.registerPlugin(ScrollTrigger);
 
-				gsap.from(firstMapRef.current, {
-					x: 100,
-					opacity: 0,
-					duration: 1,
-					scrollTrigger: {
-							trigger: firstMapRef.current,
-							start: 'top 80%',
-					}
-				});
+            // Параллакс эффект для фона
+            const parallaxAnimation = gsap.to(bgRef.current, {
+                yPercent: 20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: firstSectionRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1,
+                    invalidateOnRefresh: true
+                }
+            });
 
-				// Второй блок
-				gsap.from(secondInfoRef.current, {
-						x: 100,
-						opacity: 0,
-						duration: 1,
-						scrollTrigger: {
-								trigger: secondInfoRef.current,
-								start: 'top 80%',
-						}
-				});
+            // Анимации для карт
+            gsap.from(firstMapRef.current, {
+                x: 100,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: firstMapRef.current,
+                    start: 'top 80%',
+                }
+            });
 
-				gsap.from(secondMapRef.current, {
-						x: -100,
-						opacity: 0,
-						duration: 1,
-						scrollTrigger: {
-								trigger: secondMapRef.current,
-								start: 'top 80%',
-						}
-				});
-			}
+            gsap.from(secondMapRef.current, {
+                x: -100,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: secondMapRef.current,
+                    start: 'top 80%',
+                }
+            });
 
-			return () => {
-				ScrollTrigger.getAll().forEach(t => t.kill())
-				gsap.killTweensOf("*")
-			}
-		}, [mounted]);
+            // Очистка всех анимаций
+            return () => {
+                parallaxAnimation.kill();
+                ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+                gsap.killTweensOf("*");
+            }
+        }
+    }, [mounted]);
+
+    if (!mounted) return null;
 
     return (
         <main>
-					<section className="relative">
+					<section ref={firstSectionRef} className="relative overflow-hidden">
             <Header />
 						<img 
+							ref={bgRef}
 							src="/images/bg-contact.png" 
 							alt="team" 
-							className="-z-10 absolute object-cover object-top md:object-center lg:object-[50%_83%] top-0 left-0 w-full h-full" 
+							className="-z-10 absolute object-cover object-top md:object-center lg:object-[50%_83%] top-0 left-0 w-full h-full will-change-transform" 
 						/>
             <div className="px-5 md:px-0 flex flex-col items-center gap-y-6 md:gap-y-4 mx-auto md:max-w-[528px] text-center py-24 md:pt-[60px] md:pb-20">
                 <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px]">
@@ -92,8 +91,8 @@ export default function Contact() {
                 </p>
             </div>
         	</section>
-					<section className="max-w-[1280px] mx-auto px-5 lg:px-0">
-						<div className="pt-24 pb-6 md:pt-20 md:pb-[30px] flex flex-col lg:flex-row items-center justify-between gap-y-12">
+					<section className="max-w-[1280px] mx-auto px-5 lg:px-0 block-p">
+						<div className="pt-24 pb-6 md:pt-20 md:pb-[30px] flex flex-col lg:flex-row items-center justify-between gap-y-12 gap-x-5">
 							<div 
 								ref={firstInfoRef}
 								className="w-full lg:w-[390px] h-auto md:h-[460px] flex flex-col justify-between gap-y-12"
@@ -159,7 +158,7 @@ export default function Contact() {
 								</div>
 							</div>
 						</div>
-						<div className="pt-6 pb-12 md:pt-20 md:pb-[30px] flex flex-col lg:flex-row-reverse items-center justify-between gap-y-12">
+						<div className="pt-6 pb-12 md:pt-20 md:pb-[30px] flex flex-col lg:flex-row-reverse items-center justify-between gap-y-12 gap-x-5">
 							<div 
 								ref={secondInfoRef}
 								className="w-full lg:w-[390px] h-auto md:h-[460px] flex flex-col justify-between gap-y-12"

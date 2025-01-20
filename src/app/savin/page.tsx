@@ -1,4 +1,8 @@
 'use client'
+
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Services from '../components/Services'
 import Footer from '../components/Footer'
 import MastersSection from '../components/MastersSection'
@@ -8,15 +12,41 @@ import Button from '../components/Button'
 import About from '../components/About'
 import AboutGallery from '../components/AboutGallery'
 
+// Регистрируем плагин ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
+  const bgRef = useRef<HTMLImageElement>(null);
+  const firstSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const parallaxAnimation = gsap.to(bgRef.current, {
+      yPercent: 20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: firstSectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    return () => {
+      parallaxAnimation.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
     <main>
-      <section className="relative">
+      <section ref={firstSectionRef} className="relative overflow-hidden">
         <Header />
         <img 
+          ref={bgRef}
           src="/images/bg-savin.png" 
           alt="team" 
-          className="-z-10 absolute object-cover object-center top-0 left-0 w-full h-full" 
+          className="-z-10 absolute object-cover object-center top-0 left-0 w-full h-full will-change-transform" 
         />
         <div className="px-5 md:px-0 flex flex-col items-center gap-y-[96px] md:gap-y-[60px] text-center md:py-20 py-[96px]">
             <div className="flex flex-col">
@@ -50,7 +80,7 @@ export default function Home() {
               >
                 посмотреть цены
               </Button>
-        </div>
+            </div>
         </div>
       </section>
       <section id="about-section" className="py-12 px-5 lg:px-0 md:py-20 flex items-center justify-between lg:max-w-[1540px] mx-auto">
