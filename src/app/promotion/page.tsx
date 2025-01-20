@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from "next/image";
@@ -11,7 +11,6 @@ import Link from "next/link";
 import vk from '../../../public/icons/vk-green.svg';
 import telegram from '../../../public/icons/telegram-green.svg';
 import { Checkbox } from "../components/Checkbox";
-import { useState } from "react";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 
@@ -21,35 +20,11 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Promotion() {
     const [checked, setChecked] = useState(false);
     const [checkPolicy, setCheckPolicy] = useState(false);
-    const bgRef = useRef<HTMLElement>(null);
-    const firstSectionRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        const parallaxAnimation = gsap.to(bgRef.current, {
-            yPercent: 20,
-            ease: "none",
-            scrollTrigger: {
-                trigger: firstSectionRef.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: 1,
-                invalidateOnRefresh: true
-            }
-        });
-
-        return () => {
-            parallaxAnimation.kill();
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    }, []);
 
     return (
         <main>
-            <section ref={firstSectionRef} className="relative overflow-hidden">
-                <div 
-                    ref={bgRef}
-                    className="absolute inset-0 bg-primary will-change-transform" 
-                />
+            <section className="relative">
+                <div className="absolute inset-0 bg-primary" />
                 <Header />
                 <div className="relative pt-[62px] pb-24 px-5 md:px-0 md:pt-[60px] md:pb-20 flex flex-col items-center gap-y-[36px] md:gap-y-4 mx-auto md:max-w-[760px] text-center">
                     <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px]">
@@ -97,7 +72,7 @@ export default function Promotion() {
                 >
                     <div className="flex flex-col gap-y-2">
                             <h5 className="font-tilda-sans font-bold text-[18px] uppercase">
-                                Акция "День рождения"
+                                Акция &quot;День рождения&quot;
                             </h5>
                             <p className="font-tilda-sans font-light text-[16px]">
                                 Поздравляем с Днем рождения! Скидка 10% в подарок!
@@ -125,7 +100,7 @@ export default function Promotion() {
                 >
                     <div className="flex flex-col gap-y-2">
                             <h5 className="font-tilda-sans font-bold text-[18px] uppercase">
-                                Акция "Приведи подругу"
+                                Акция &quot;Приведи подругу&quot;
                             </h5>
                             <p className="font-tilda-sans font-light text-[16px]">
                                 Делитесь красотой с подругой и получайте скидки!
