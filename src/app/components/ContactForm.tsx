@@ -156,6 +156,7 @@ export default function ContactForm() {
 					className="w-full"
 					value={formData.message}
 					error={errors.message}
+					variant="black"
 					errorMessage={errors.message ? "Это поле обязательно" : undefined}
 					onChange={(e) => {
 						setFormData(prev => ({ ...prev, message: e.target.value }));

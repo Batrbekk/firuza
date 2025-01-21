@@ -34,7 +34,7 @@ export default function Preloader({ onLoadComplete }: PreloaderProps) {
   }, [onLoadComplete])
 
   return (
-    <div className="preloader fixed inset-0 bg-primary z-50 flex items-center justify-center">
+    <div className="preloader fixed inset-0 bg-primary z-[9999] flex items-center justify-center">
       <div className="flex flex-col items-center gap-y-4">
         <img 
           src="/images/logo.svg" 

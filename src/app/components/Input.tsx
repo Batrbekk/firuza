@@ -17,7 +17,8 @@ export default function Input({
     <div className="w-full">
       <input
         className={`
-          w-full h-[40px] px-4 font-tilda-sans text-[14px] transition-colors
+          w-full h-[40px] px-4 font-tilda-sans text-[14px] transition-colors outline-none
+          caret-primary
           ${variant === 'white' ? 'bg-white text-black' : 'bg-transparent text-black'} 
           ${error 
             ? 'border border-[#F00F0F] focus:border-[#F00F0F]' 
@@ -25,6 +26,7 @@ export default function Input({
               ? 'border border-black focus:border-primary' 
               : 'focus:border-primary'
           }
+          focus:border
           ${className}
         `}
         {...props}
