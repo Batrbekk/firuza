@@ -13,6 +13,7 @@ import About from '../components/About'
 import AboutGallery from '../components/AboutGallery'
 import { YCLIENTS_IDS } from '../constants/yclients'
 import YClientsWidget from '../components/YClientsWidget'
+import FadeUpText from '../components/FadeUpText'
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -70,7 +71,7 @@ export default function Savin() {
               </Button>
               <Button 
                 variant='outline' 
-                className="w-full md:w-[240px] text-white border-white hover:text-primary hover:border-primary"
+                className="w-full md:w-[240px] text-white border-white hover:text-primary hover:bg-white"
                 onClick={() => {
                   document.getElementById('prices')?.scrollIntoView({ 
                     behavior: 'smooth',
@@ -88,39 +89,51 @@ export default function Savin() {
         <div id="about-desc" className="w-full max-w-[695px]">
           <div className="flex flex-col gap-y-6">
             <div className="flex flex-col gap-2">
-              <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
-                о салоне 
-              </h6>
-              <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
-                Firuza Nail Studio
-              </h2>
+              <FadeUpText delay={0.1}>
+                <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
+                  о салоне 
+                </h6>
+              </FadeUpText>
+              <FadeUpText delay={0.2}>
+                <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
+                  Firuza Nail Studio
+                </h2>
+              </FadeUpText>
             </div>
-            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-              FirUza Nail Studio — это бренд красоты и качества. Наше пространство создано для тех, кто ценит индивидуальный подход и желает получить качественный сервис и результаты. Безупречное качество и элегантность - так мы видим идеальный маникюр и педикюр. Создание и коррекция формы бровей, ламинирование и наращивание ресниц, подчёркивающий ваш взгляд, перманентный макияж - всё чтобы сделать ваши брови и ресницы такими, как нравится вам!
-            </p>
-            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-              Доверяйте свою красоту профессионалам!
-            </p>
+            <FadeUpText delay={0.3}>
+              <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+                  FirUza Nail Studio — это бренд красоты и качества. Наше пространство создано для тех, кто ценит индивидуальный подход и желает получить качественный сервис и результаты. Безупречное качество и элегантность - так мы видим идеальный маникюр и педикюр. Создание и коррекция формы бровей, ламинирование и наращивание ресниц, подчёркивающий ваш взгляд, перманентный макияж - всё чтобы сделать ваши брови и ресницы такими, как нравится вам!
+              </p>
+            </FadeUpText>
+            <FadeUpText delay={0.4}>
+              <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+                Доверяйте свою красоту профессионалам!
+              </p>
+            </FadeUpText>
           </div>
           <div className="flex items-center flex-col md:flex-row justify-between mt-4">
-            <div className="flex items-center w-full gap-x-4">
-              <p className="font-tilda-sans font-light text-[16px]">
-                опытных <br />
-                мастеров
-              </p>
-              <p className="font-tenor-sans text-[90px]">
-                12<span className="text-[64px]">+</span>
-              </p>
-            </div>
-            <div className="flex items-center w-full justify-end md:justify-start gap-x-4">
-              <p className="font-tilda-sans font-light text-[16px]">
-                довольных <br />
-                клиентов
-              </p>
-              <p className="font-tenor-sans text-[90px]">
-                5к<span className="text-[64px]">+</span>
-              </p>
-            </div>
+            <FadeUpText delay={0.5}>
+              <div className="flex items-center w-full gap-x-4">
+                <p className="font-tilda-sans font-light text-[16px]">
+                  опытных <br />
+                  мастеров
+                </p>
+                <p className="font-tenor-sans text-[90px]">
+                  12<span className="text-[64px]">+</span>
+                </p>
+              </div>
+            </FadeUpText>
+            <FadeUpText delay={0.5}>
+              <div className="flex items-center w-full justify-end md:justify-start gap-x-4">
+                <p className="font-tilda-sans font-light text-[16px]">
+                  довольных <br />
+                  клиентов
+                </p>
+                <p className="font-tenor-sans text-[90px]">
+                  5к<span className="text-[64px]">+</span>
+                </p>
+              </div>
+            </FadeUpText>
           </div>
           <Button className="w-full md:w-[240px] mt-7 hover:bg-white hover:text-primary">
             Выбрать мастера

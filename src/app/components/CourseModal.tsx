@@ -1,4 +1,4 @@
-'use client'
+ 'use client'
 
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
@@ -6,25 +6,45 @@ import Image from 'next/image'
 import Input from './Input'
 import Button from './Button'
 import { Checkbox } from './Checkbox'
+import Select from './Select'
 import { toast } from 'sonner'
 
-interface PromotionModalProps {
+interface CourseModalProps {
   isOpen: boolean
   onClose: () => void
 }
 
-export default function PromotionModal({ isOpen, onClose }: PromotionModalProps) {
+interface FormData {
+  course: string;
+  name: string;
+  email: string;
+  phone: string;
+  salon: string;
+  consent1: boolean;
+  consent2: boolean;
+}
+
+export default function CourseModal({ isOpen, onClose }: CourseModalProps) {
   const [mounted, setMounted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [errors, setErrors] = useState({
-    phone: false,
-    consents: false
-  })
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
+    course: '',
+    name: '',
+    email: '',
     phone: '',
+    salon: '',
     consent1: false,
     consent2: false
+  })
+
+  const [errors, setErrors] = useState({
+    course: false,
+    name: false,
+    email: false,
+    phone: false,
+    salon: false,
+    consents: false
   })
 
   useEffect(() => {
@@ -49,19 +69,50 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
 
   if (!isOpen || !mounted) return null
 
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
   const validatePhone = (phone: string) => {
     return phone.length >= 10
   }
 
   const handleSubmit = async () => {
     // Сброс ошибок
-    setErrors({ phone: false, consents: false })
+    setErrors({
+      course: false,
+      name: false,
+      email: false,
+      phone: false,
+      salon: false,
+      consents: false
+    })
     
     // Валидация
     let hasError = false
     
+    if (!formData.course) {
+      setErrors(prev => ({ ...prev, course: true }))
+      hasError = true
+    }
+
+    if (!formData.name) {
+      setErrors(prev => ({ ...prev, name: true }))
+      hasError = true
+    }
+
+    if (!validateEmail(formData.email)) {
+      setErrors(prev => ({ ...prev, email: true }))
+      hasError = true
+    }
+
     if (!validatePhone(formData.phone)) {
       setErrors(prev => ({ ...prev, phone: true }))
+      hasError = true
+    }
+
+    if (!formData.salon) {
+      setErrors(prev => ({ ...prev, salon: true }))
       hasError = true
     }
     
@@ -90,7 +141,11 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
       
       // Очистка формы
       setFormData({
+        course: '',
+        name: '',
+        email: '',
         phone: '',
+        salon: '',
         consent1: false,
         consent2: false
       })
@@ -128,7 +183,7 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
         className="fixed inset-0 flex items-center justify-center"
         onClick={handleBackdropClick}
       >
-        <div className="relative bg-white w-[760px] px-6 md:px-[112px] py-[56px] mx-5">
+        <div className="relative bg-white w-[800px] px-6 md:px-[112px] py-[56px] mx-5">
           <button className="absolute top-4 right-4" onClick={onClose}>
             <Image 
               src="/icons/close.svg" 
@@ -138,31 +193,83 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
             />
           </button>
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2">
-              <h2 className="text-[28px] md:text-[38px] font-tenor-sans">
-                Не упустите свою скидку!
+            <div className="flex flex-col gap-2 text-center">
+              <h2 className="text-[18px] font-tilda-sans font-bold">
+                ВЫБЕРИТЕ КУРС И ЗАПИШИТЕСЬ ПРЯМО СЕЙЧАС!
               </h2>
               <p className="text-[16px] font-tilda-sans font-light">
-                Хотите узнать подробности о нашей эксклюзивной скидке и получить персональное предложение? Заполните форму ниже, и наш менеджер свяжется с вами в ближайшее время, чтобы ответить на все ваши вопросы
+                Просто выберите интересующий вас курс и заполните форму ниже.
+                Мы свяжемся с вами в ближайшее время для подтверждения записи
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 md:gap-3">
+            <div className="flex flex-col gap-4">
+              <Select
+                options={['Маникюр базовый с 0', 'PRO - маникюр', 'Верхние формы']}
+                placeholder="Выбрать курс"
+                className="w-full"
+                value={formData.course}
+                error={errors.course}
+                onChange={(value) => {
+                  setFormData(prev => ({ ...prev, course: value }))
+                  setErrors(prev => ({ ...prev, course: false }))
+                }}
+              />
+
               <Input
-                placeholder="Телефон"
+                placeholder="ФИО*"
+                value={formData.name}
+                variant="black"
+                className="h-[50px]"
+                error={errors.name}
+                errorMessage={errors.name ? "Введите ваше ФИО" : undefined}
+                onChange={(e) => {
+                  setFormData(prev => ({ ...prev, name: e.target.value }))
+                  setErrors(prev => ({ ...prev, name: false }))
+                }}
+              />
+
+              <Input
+                placeholder="Email*"
+                value={formData.email}
+                variant="black"
+                className="h-[50px]"
+                error={errors.email}
+                errorMessage={errors.email ? "Введите корректный email" : undefined}
+                onChange={(e) => {
+                  setFormData(prev => ({ ...prev, email: e.target.value }))
+                  setErrors(prev => ({ ...prev, email: false }))
+                }}
+              />
+
+              <Input
+                placeholder="Телефон*"
                 value={formData.phone}
                 variant="black"
+                className="h-[50px]"
                 error={errors.phone}
                 errorMessage={errors.phone ? "Введите корректный номер телефона" : undefined}
                 onChange={(e) => {
-                  setFormData({...formData, phone: e.target.value})
+                  setFormData(prev => ({ ...prev, phone: e.target.value }))
                   setErrors(prev => ({ ...prev, phone: false }))
                 }}
               />
 
-              <div className="flex flex-col gap-y-4 md:gap-3">
+              <Select
+                options={['на Саввинском шоссе', 'на Народного ополчения']}
+                placeholder="Адрес салона"
+                className="w-full"
+                value={formData.salon}
+                error={errors.salon}
+                onChange={(value) => {
+                  setFormData(prev => ({ ...prev, salon: value }))
+                  setErrors(prev => ({ ...prev, salon: false }))
+                }}
+              />
+
+              <div className="flex flex-col gap-y-4">
                 <Checkbox
-                  label="Ознакомлена с правилами предоставления скидок"
+                  label="Проставляя галочку в чек-боке, я прочитал (а) и согласен (на) с условиями договора-оферты"
                   checked={formData.consent1}
                   error={errors.consents}
                   onChange={() => {
@@ -171,7 +278,7 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
                   }}
                 />
                 <Checkbox
-                  label="Даю свое согласие на обработку персональных данных"
+                  label="Ознакомлен (а) с политикой обработки персональных данных и даю согласие на обработку персональных данных"
                   checked={formData.consent2}
                   error={errors.consents}
                   onChange={() => {
@@ -182,7 +289,6 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
               </div>
 
               <Button 
-                className="w-[258px] h-[50px]"
                 onClick={handleSubmit}
                 disabled={isLoading}
               >
@@ -192,7 +298,7 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
                     <span>Отправка...</span>
                   </div>
                 ) : (
-                  'Получить скидку'
+                  'ЗАПИСАТЬСЯ'
                 )}
               </Button>
             </div>
@@ -203,4 +309,4 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
   )
 
   return createPortal(modal, document.body)
-} 
+}

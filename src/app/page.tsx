@@ -21,6 +21,7 @@ import { YCLIENTS_IDS } from './constants/yclients'
 import YClientsWidget from './components/YClientsWidget';
 import Preloader from './components/Preloader';
 import { useFirstVisit } from './hooks/useFirstVisit';
+import FadeUpText from './components/FadeUpText'
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -355,12 +356,14 @@ export default function Home() {
                 id="prices"
                 className="px-5 lg:px-0 py-12 lg:py-20 flex flex-col md:border-dashed md:border border-black/10 bg-[#fcfcfc] md:mg-white"
             >
-                <TextReveal className='text-center text-[28px] md:text-[44px] font-tenor-sans uppercase'>
-                    УСЛУГИ И ЦЕНЫ
-                </TextReveal>
+                <FadeUpText>
+                    <h2 className='text-center text-[28px] md:text-[44px] font-tenor-sans uppercase'>
+                        УСЛУГИ И ЦЕНЫ
+                    </h2>
+                </FadeUpText>
                 <Services/>
                 <Button className='w-full md:w-[240px] mx-auto'>
-                    полный прайс-лист
+                  полный прайс-лист
                 </Button>
             </section>
             <section id="advantages"
@@ -373,44 +376,54 @@ export default function Home() {
                 <About/>
                 <div id="about-desc" className="w-full max-w-[695px]">
                     <div className="flex flex-col gap-y-6">
-                        <div className="flex flex-col gap-2">
-                            <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
-                                о наших салонах
-                            </h6>
-                            <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
-                                Firuza Nail Studio
-                            </h2>
-                        </div>
-                        <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-                            Добро пожаловать в сеть салонов красоты FirUza Nail Studio!
-                            В наших салонах мы создали уютную и гостеприимную атмосферу, где каждый посетитель чувствует себя как
-                            дома. Мы уделяем большое внимание мелочам, чтобы ваш визит был максимально комфортным и приятным.
-                        </p>
-                        <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-                            Приходите к нам и убедитесь сами, почему FirUza Nail Studio — это идеальное место для заботы о себе и
-                            своем внешнем виде. Мы всегда рады видеть вас и готовы подарить вам радость и уверенность в своей
-                            красоте!
-                        </p>
+                        <FadeUpText>
+                            <div className="flex flex-col gap-2">
+                                <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
+                                    о наших салонах
+                                </h6>
+                                <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
+                                    Firuza Nail Studio
+                                </h2>
+                            </div>
+                        </FadeUpText>
+                        <FadeUpText delay={0.2}>
+                            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+                                Добро пожаловать в сеть салонов красоты FirUza Nail Studio!
+                                В наших салонах мы создали уютную и гостеприимную атмосферу, где каждый посетитель чувствует себя как
+                                дома. Мы уделяем большое внимание мелочам, чтобы ваш визит был максимально комфортным и приятным.
+                            </p>
+                        </FadeUpText>
+                        <FadeUpText delay={0.3}>
+                            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+                                Приходите к нам и убедитесь сами, почему FirUza Nail Studio — это идеальное место для заботы о себе и
+                                своем внешнем виде. Мы всегда рады видеть вас и готовы подарить вам радость и уверенность в своей
+                                красоте!
+                            </p>
+                        </FadeUpText>
                     </div>
                     <div className="flex items-center flex-col md:flex-row justify-between mt-4">
-                        <div className="flex items-center w-full gap-x-4">
-                            <p className="font-tilda-sans font-light text-[16px]">
-                                актуальных <br/>
-                                расцветок
-                            </p>
-                            <p className="font-tenor-sans text-[90px]">
-                                100<span className="text-[64px]">+</span>
-                            </p>
-                        </div>
-                        <div className="flex items-center w-full justify-end md:justify-start gap-x-4">
-                            <p className="font-tilda-sans font-light text-[16px]">
-                                довольных <br/>
-                                клиентов
-                            </p>
-                            <p className="font-tenor-sans text-[90px]">
-                                5к<span className="text-[64px]">+</span>
-                            </p>
-                        </div>
+                        <FadeUpText delay={0.4}>
+                          <div className="flex items-center w-full gap-x-4">
+                              <p className="font-tilda-sans font-light text-[16px]">
+                                  актуальных <br/>
+                                  расцветок
+                              </p>
+                              <p className="font-tenor-sans text-[90px]">
+                                  100<span className="text-[64px]">+</span>
+                              </p>
+                          </div>
+                        </FadeUpText>
+                        <FadeUpText delay={0.4}>
+                          <div className="flex items-center w-full justify-end md:justify-start gap-x-4">
+                              <p className="font-tilda-sans font-light text-[16px]">
+                                  довольных <br/>
+                                  клиентов
+                              </p>
+                              <p className="font-tenor-sans text-[90px]">
+                                  5к<span className="text-[64px]">+</span>
+                              </p>
+                          </div>
+                        </FadeUpText>
                     </div>
                     <Button className="w-full md:w-[240px] mt-7">
                         записаться

@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useCallback } from 'react'
 import { useEffect } from 'react'
 import { flushSync } from 'react-dom'
+import FadeUpText from './FadeUpText'
 
 interface BlogPost {
   id: number
@@ -37,24 +38,30 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
       </div>
 
       <div className="md:border-b border-primary py-6 flex flex-col gap-2">
-        <h5 className="text-lg font-tilda-sans font-bold block">
-          {post.category}
-        </h5>
-        <h3 className="text-base font-tilda-sans font-light">
-          {post.title}
-        </h3>
-        <button
-          className="w-[126px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-sm uppercase group"
-        >
-          Подробнее
-          <Image 
-            src="/icons/r-arrow.svg" 
-            alt="arrow-right" 
-            width={17} 
-            height={10} 
-            className="transition-transform duration-300 group-hover:translate-x-2"
-          />
-        </button>
+        <FadeUpText delay={0.1}>
+          <h5 className="text-lg font-tilda-sans font-bold block">
+            {post.category}
+          </h5>
+        </FadeUpText>
+        <FadeUpText delay={0.2}>
+          <h3 className="text-base font-tilda-sans font-light">
+            {post.title}
+          </h3>
+        </FadeUpText>
+        <FadeUpText delay={0.3}>
+          <button
+            className="w-[126px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-sm uppercase group"
+          >
+            Подробнее
+            <Image 
+              src="/icons/r-arrow.svg" 
+              alt="arrow-right" 
+              width={17} 
+              height={10} 
+              className="transition-transform duration-300 group-hover:translate-x-2"
+            />
+          </button>
+        </FadeUpText>
       </div>
     </article>
   )
@@ -139,19 +146,25 @@ const Blog = () => {
     <section id="blog-section" className="pt-[60px] pb-[52px] md:py-20 lg:max-w-[1540px] mx-auto px-5 lg:px-0 block-p">
       <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-9 max-w-[1280px] mx-auto gap-y-5">
         <div className="flex flex-col gap-2">
-          <h6 className="text-primary text-[14px] font-tilda-sans font-bold uppercase">
-            блог
-          </h6>
-          <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase leading-[128%]">
-            Интересные и полезные <br /> статьи из нашего блога
-          </h2>
+          <FadeUpText delay={0.1}>
+            <h6 className="text-primary text-[14px] font-tilda-sans font-bold uppercase">
+              блог
+            </h6>
+          </FadeUpText>
+          <FadeUpText delay={0.2}>
+            <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase leading-[128%]">
+              Интересные и полезные <br /> статьи из нашего блога
+            </h2>
+          </FadeUpText>
         </div>
-        <Link 
-          href="/blog"
-          className="h-[50px] max-w-[240px] w-full bg-primary text-white items-center justify-center hover:opacity-80 uppercase font-tilda-sans font-bold text-[14px] hidden md:flex"
-        >
-          больше статей
-        </Link>
+        <FadeUpText delay={0.3} className="max-w-[240px] w-full">
+          <Link 
+            href="/blog"
+            className="h-[50px] max-w-[240px] w-full bg-primary text-white items-center justify-center hover:opacity-80 uppercase font-tilda-sans font-bold text-[14px] hidden md:flex"
+          >
+            больше статей
+          </Link>
+        </FadeUpText>
       </div>
 
       <div className="hidden gap-5 md:flex md:flex-wrap lg:flex-nowrap justify-center">

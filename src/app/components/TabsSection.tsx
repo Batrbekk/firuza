@@ -18,11 +18,17 @@ interface TabsSectionProps {
 }
 
 const tabs = [
-  { id: 'health', label: 'Все статьи' },
-  { id: 'makeup', label: 'Здоровье' },
-  { id: 'skincare', label: 'Макияж' },
-  { id: 'wellness', label: 'Уход за кожей' },
+  { id: 'all', label: 'Все статьи' },
+  { id: 'health', label: 'Здоровье' },
+  { id: 'makeup', label: 'Макияж' },
+  { id: 'skincare', label: 'Уход за кожей' },
 ] as const;
+
+const categoryToTabMap = {
+  'Здоровье': 'health',
+  'Макияж': 'makeup',
+  'Уход за кожей': 'skincare',
+} as const;
 
 export default function TabsSection({ 
   articles,
@@ -30,7 +36,7 @@ export default function TabsSection({
   articles3,
   articles4
 }: TabsSectionProps) {
-  const [activeTab, setActiveTab] = useState('health');
+  const [activeTab, setActiveTab] = useState('all');
   const [displayedArticles, setDisplayedArticles] = useState<Article[]>([]);
 
   useEffect(() => {
@@ -47,16 +53,16 @@ export default function TabsSection({
         
         let newArticles: Article[] = [];
         switch(tabId) {
-          case 'health':
+          case 'all':
             newArticles = articles;
             break;
-          case 'makeup':
+          case 'health':
             newArticles = articles2;
             break;
-          case 'skincare':
+          case 'makeup':
             newArticles = articles3;
             break;
-          case 'wellness':
+          case 'skincare':
             newArticles = articles4;
             break;
         }
@@ -70,6 +76,11 @@ export default function TabsSection({
         });
       }
     });
+  };
+
+  const handleCategoryClick = (category: string) => {
+    const tabId = categoryToTabMap[category as keyof typeof categoryToTabMap] || 'health';
+    handleTabClick(tabId);
   };
 
   return (
@@ -98,6 +109,7 @@ export default function TabsSection({
             category={article.category}
             date={article.date}
             title={article.title}
+            onCategoryClick={handleCategoryClick}
           />
         ))}
       </div>

@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import TextReveal from "../components/TextReveal";
 import ContactForm from "../components/ContactForm";
+import FadeUpText from "../components/FadeUpText";
 
 export default function Contact() {
 		const [mounted, setMounted] = useState(false);
@@ -83,12 +84,14 @@ export default function Contact() {
                 <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px]">
 									Контакты
                 </TextReveal>
-                <p 
-                    className="text-white font-tilda-sans text-[18px]"
-                >
-                   Мы будем рады видеть вас в одном из наших салонов. 
-									 Выберите удобное для вас местоположение и запишитесь на услугу
-                </p>
+                <FadeUpText delay={0.1}>
+									<p 
+											className="text-white font-tilda-sans text-[18px]"
+									>
+										Мы будем рады видеть вас в одном из наших салонов. 
+										Выберите удобное для вас местоположение и запишитесь на услугу
+									</p>
+								</FadeUpText>
             </div>
         	</section>
 					<section className="max-w-[1280px] mx-auto px-5 lg:px-0 block-p">
@@ -99,48 +102,56 @@ export default function Contact() {
 							>
 								<div className="flex flex-col gap-y-4">
 									<div className="flex flex-col gap-y-4">
-										<h3 className="font-tenor-sans text-[28px] md:text-[31px]">
-											ЖЕЛЕЗНОДОРОЖНЫЙ
+										<FadeUpText delay={0.1}>
+											<h3 className="font-tenor-sans text-[28px] md:text-[31px]">
+												ЖЕЛЕЗНОДОРОЖНЫЙ
+											</h3>
+										</FadeUpText>
+										<FadeUpText delay={0.2}>
+											<p className="font-tilda-sans text-[18px] pb-4">
+												Московская область, город Балашиха, микрорайон Железнодорожный, Саввинское шоссе, дом 4, корпус 2
+											</p>
+										</FadeUpText>
+									</div>
+									<FadeUpText delay={0.3}>
+										<div className="flex flex-col gap-y-2">
+											<a 
+												href="tel:+79060811441" 
+												className="font-tilda-sans font-bold text-[20px]"
+											>
+												+7 (906) 081-14-41
+											</a>
+											<a 
+												href="mailto:firuzanails@gmail.com" className="font-tilda-sans font-bold text-[20px]"
+											>
+												firuzanails@gmail.com
+											</a>
+										</div>
+									</FadeUpText>
+								</div>
+								<FadeUpText delay={0.4}>
+									<div className="flex flex-col gap-y-4">
+										<h3 className="font-tenor-sans md:text-[38px] text-[28px]">
+											Режим работы
 										</h3>
-										<p className="font-tilda-sans text-[18px] pb-4">
-											Московская область, город Балашиха, микрорайон Железнодорожный, Саввинское шоссе, дом 4, корпус 2
-										</p>
+										<div className="flex items-center gap-x-4">
+											<p className="text-primary font-tilda-sans text-[18px]">
+												Пн - Пт
+											</p>
+											<h5 className="font-tilda-sans text-[18px] font-bold">
+												09:00–21:00
+											</h5>
+										</div>
+										<div className="flex items-center gap-x-4">
+											<p className="text-primary font-tilda-sans text-[18px]">
+												Сб - Вс
+											</p>
+											<h5 className="font-tilda-sans text-[18px] font-bold">
+												09:30–21:00
+											</h5>
+										</div>
 									</div>
-									<div className="flex flex-col gap-y-2">
-										<a 
-											href="tel:+79060811441" 
-											className="font-tilda-sans font-bold text-[20px]"
-										>
-											+7 (906) 081-14-41
-										</a>
-										<a 
-											href="mailto:firuzanails@gmail.com" className="font-tilda-sans font-bold text-[20px]"
-										>
-											firuzanails@gmail.com
-										</a>
-									</div>
-								</div>
-								<div className="flex flex-col gap-y-4">
-									<h3 className="font-tenor-sans md:text-[38px] text-[28px]">
-										Режим работы
-									</h3>
-									<div className="flex items-center gap-x-4">
-										<p className="text-primary font-tilda-sans text-[18px]">
-											Пн - Пт
-										</p>
-										<h5 className="font-tilda-sans text-[18px] font-bold">
-											09:00–21:00
-										</h5>
-									</div>
-									<div className="flex items-center gap-x-4">
-										<p className="text-primary font-tilda-sans text-[18px]">
-											Сб - Вс
-										</p>
-										<h5 className="font-tilda-sans text-[18px] font-bold">
-											09:30–21:00
-										</h5>
-									</div>
-								</div>
+								</FadeUpText>
 							</div>	
 							<div 
 								ref={firstMapRef}
@@ -148,11 +159,11 @@ export default function Contact() {
 							>
 								<div className="absolute top-0 left-0 w-full h-full">
 									<iframe 
-										src="https://yandex.ru/map-widget/v1/?ll=38.010094%2C55.744121&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjcwMzE5MBKfAdCg0L7RgdGB0LjRjywg0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsINCR0LDQu9Cw0YjQuNGF0LAsINC80LjQutGA0L7RgNCw0LnQvtC9INCW0LXQu9C10LfQvdC-0LTQvtGA0L7QttC90YvQuSwg0KHQsNCy0LLQuNC90YHQutC-0LUg0YjQvtGB0YHQtSwgNNC6MiIKDUsKGEIVKfpeQg%2C%2C&z=16.12" 
+										src="https://yandex.ru/map-widget/v1/?ll=38.010094%2C55.744121&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjcwMzE5MBKfAdCg0L7RgdGB0LjRjywg0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsINCR0LDQu9Cw0YjQuNGF0LAsINC80LjQutGA0L7RgNCw0LnQvtC9INCW0LXQu9C10LfQvdC-0LTQvtGA0L7QttC90YvQuSwg0KHQsNCy0LLQuNC90YHQutC-0LUg0YjQvtGB0YHQtSwgNNC6MiIKDUsKGEIVKfpeQg%2C%2C&scroll=false&z=16.12" 
 										width="100%" 
 										height="100%" 
 										frameBorder="0" 
-										allowFullScreen={true} 
+										allowFullScreen={false} 
 										className="relative w-full h-full"
 									/>
 								</div>
@@ -165,46 +176,54 @@ export default function Contact() {
 							>
 								<div className="flex flex-col gap-y-4">
 									<div className="flex flex-col gap-y-4">
-										<h3 className="font-tenor-sans text-[28px] md:text-[31px]">
-											САВВИНО
-										</h3>
-										<p className="font-tilda-sans text-[18px] pb-4">
-											Московская область, город Балашиха, микрорайон Саввино, ул. Народного ополчения, д. 1
-										</p>
+										<FadeUpText delay={0.1}>
+											<h3 className="font-tenor-sans text-[28px] md:text-[31px]">
+												САВВИНО
+											</h3>
+										</FadeUpText>
+										<FadeUpText delay={0.2}>
+											<p className="font-tilda-sans text-[18px] pb-4">
+												Московская область, город Балашиха, микрорайон Саввино, ул. Народного ополчения, д. 1
+											</p>
+										</FadeUpText>
 									</div>
-									<div className="flex flex-col gap-y-2">
-										<a 
-											href="tel:+79260411441" 
-											className="font-tilda-sans font-bold text-[20px]"
-										>
-											+7 (926) 041-14-41
-										</a>
-										<a 
-											href="mailto:firuzanailstudio@gmail.com" className="font-tilda-sans font-bold text-[20px]"
-										>
-											firuzanailstudio@gmail.com
-										</a>
-									</div>
+									<FadeUpText delay={0.3}>
+										<div className="flex flex-col gap-y-2">
+											<a 
+												href="tel:+79260411441" 
+												className="font-tilda-sans font-bold text-[20px]"
+											>
+												+7 (926) 041-14-41
+											</a>
+											<a 
+												href="mailto:firuzanailstudio@gmail.com" className="font-tilda-sans font-bold text-[20px]"
+											>
+												firuzanailstudio@gmail.com
+											</a>
+										</div>
+									</FadeUpText>
 								</div>
-								<div className="flex flex-col gap-y-4">
-									<h3 className="font-tenor-sans text-[28px] md:text-[38px]">Режим работы</h3>
-									<div className="flex items-center gap-x-4">
-										<p className="text-primary font-tilda-sans text-[18px]">
-											Пн - Пт
-										</p>
-										<h5 className="font-tilda-sans text-[18px] font-bold">
-											09:00–21:00
-										</h5>
+								<FadeUpText delay={0.4}>
+									<div className="flex flex-col gap-y-4">
+										<h3 className="font-tenor-sans text-[28px] md:text-[38px]">Режим работы</h3>
+										<div className="flex items-center gap-x-4">
+											<p className="text-primary font-tilda-sans text-[18px]">
+												Пн - Пт
+											</p>
+											<h5 className="font-tilda-sans text-[18px] font-bold">
+												09:00–21:00
+											</h5>
+										</div>
+										<div className="flex items-center gap-x-4">
+											<p className="text-primary font-tilda-sans text-[18px]">
+												Сб - Вс
+											</p>
+											<h5 className="font-tilda-sans text-[18px] font-bold">
+												09:30–21:00
+											</h5>
+										</div>
 									</div>
-									<div className="flex items-center gap-x-4">
-										<p className="text-primary font-tilda-sans text-[18px]">
-											Сб - Вс
-										</p>
-										<h5 className="font-tilda-sans text-[18px] font-bold">
-											09:30–21:00
-										</h5>
-									</div>
-								</div>
+								</FadeUpText>
 							</div>	
 							<div 
 								ref={secondMapRef}
@@ -212,11 +231,11 @@ export default function Contact() {
 							>
 								<div className="absolute top-0 left-0 w-full h-full">
 									<iframe 
-										src="https://yandex.ru/map-widget/v1/?ll=38.026944%2C55.735277&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgozMjY1NDk4MDc3Ep0B0KDQvtGB0YHQuNGPLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0JHQsNC70LDRiNC40YXQsCwg0LzQuNC60YDQvtGA0LDQudC-0L0g0KHQsNCy0LLQuNC90L4sINGD0LvQuNGG0LAg0J3QsNGA0L7QtNC90L7Qs9C-INCe0L_QvtC70YfQtdC90LjRjywgMSIKDZYbGEIV7PBeQg%2C%2C&z=16.88" 
+										src="https://yandex.ru/map-widget/v1/?ll=38.026944%2C55.735277&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgozMjY1NDk4MDc3Ep0B0KDQvtGB0YHQuNGPLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0JHQsNC70LDRiNC40YXQsCwg0LzQuNC60YDQvtGA0LDQudC-0L0g0KHQsNCy0LLQuNC90L4sINGD0LvQuNGG0LAg0J3QsNGA0L7QtNC90L7Qs9C-INCe0L_QvtC70YfQtdC90LjRjywgMSIKDZYbGEIV7PBeQg%2C%2C&scroll=false&z=16.88" 
 										width="100%" 
 										height="100%" 
 										frameBorder="0" 
-										allowFullScreen={true} 
+										allowFullScreen={false} 
 										className="relative w-full h-full"
 									/>
 								</div>
@@ -225,16 +244,22 @@ export default function Contact() {
 					</section>
 					<section className="max-w-[1020px] mx-auto px-5 lg:px-0 pt-12 pb-24 md:py-20 flex flex-col item-center gap-y-10">
 						<div className="flex flex-col items-center gap-y-6">
-							<h3 className="font-tenor-sans text-[28px] md:text-[38px] text-center">
-								ОСТАВЬТЕ СВОË СООБЩЕНИЕ
-							</h3>
-							<p className="hidden md:block font-tilda-sans text-[18px] text-center">
-								Оставьте нам сообщение, <br />
-								и мы свяжемся с вами как можно скорее.
-							</p>
-							<p className="block md:hidden font-tilda-sans text-[18px] text-center">
-								И мы свяжемся с вами <br /> как можно скорее
-							</p>
+							<FadeUpText delay={0.1}>
+								<h3 className="font-tenor-sans text-[28px] md:text-[38px] text-center">
+									ОСТАВЬТЕ СВОË СООБЩЕНИЕ
+								</h3>
+							</FadeUpText>
+							<FadeUpText delay={0.2}>
+								<p className="hidden md:block font-tilda-sans text-[18px] text-center">
+									Оставьте нам сообщение, <br />
+									и мы свяжемся с вами как можно скорее.
+								</p>
+							</FadeUpText>
+							<FadeUpText delay={0.3}>
+								<p className="block md:hidden font-tilda-sans text-[18px] text-center">
+									И мы свяжемся с вами <br /> как можно скорее
+								</p>
+							</FadeUpText>
 						</div>
 						<ContactForm />
 					</section>

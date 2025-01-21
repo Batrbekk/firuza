@@ -186,12 +186,11 @@ body {
     max-width: 826px;
   }
   .study-desc {
-    flex-direction: column!important;
     gap: 32px;
     padding-left: 64px!important;
     padding-right: 64px!important;
     div {
-      max-width: 100%!important;
+      max-width: 500px!important;
     }
   }
   #study-cards {
@@ -220,12 +219,14 @@ body {
   }
 
   #study-start-desc {
-    flex-direction: column!important;
     padding-left: 64px!important;
     padding-right: 64px!important;
-    div {
-      max-width: 100%!important;
-      justify-content: center!important;
+    h2 {
+      width: 100%!important;
+      max-width: 800px!important;
+    }
+    .right-side-wrapper {
+      max-width: 500px!important;
     }
   }
 }

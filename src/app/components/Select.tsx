@@ -1,9 +1,12 @@
+'use client'
+
 import { useState } from 'react';
 
 interface SelectProps {
   options: string[];
   placeholder?: string;
-  defaultValue?: string;
+  value?: string;
+  error?: boolean;
   onChange?: (value: string) => void;
   className?: string;
 }
@@ -11,33 +14,34 @@ interface SelectProps {
 export default function Select({ 
   options, 
   placeholder = 'Выберите значение',
-  defaultValue, 
+  value,
+  error,
   onChange,
   className = '' 
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(defaultValue || '');
 
-  const handleSelect = (value: string) => {
-    setSelected(value);
+  const handleSelect = (newValue: string) => {
     setIsOpen(false);
-    onChange?.(value);
+    onChange?.(newValue);
   };
 
   return (
     <div className="relative w-full">
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`
           w-[240px] h-[50px] px-[10px] 
-          border border-[#292929]
+          border transition-colors
           flex items-center justify-between
           font-tilda-sans text-base font-light
+          ${error ? 'border-[#F00F0F]' : 'border-[#292929]'}
           ${className}
         `}
       >
-        <span className={selected ? 'text-black' : 'text-black/60'}>
-          {selected || placeholder}
+        <span className={value ? 'text-black' : 'text-black/60'}>
+          {value || placeholder}
         </span>
         <svg 
           width="16" 
@@ -49,7 +53,7 @@ export default function Select({
         >
           <path 
             d="M4 10L8 13.4286L12 10" 
-            stroke="black" 
+            stroke={error ? '#F00F0F' : 'black'} 
             strokeWidth="1.5" 
             strokeLinecap="round"
           />
@@ -66,13 +70,14 @@ export default function Select({
         ">
           {options.map((option) => (
             <button
+              type="button"
               key={option}
               onClick={() => handleSelect(option)}
               className={`
                 w-full px-[10px] py-2.5
                 text-left font-tilda-sans text-base
                 hover:bg-gray-50 transition-colors
-                ${selected === option ? 'text-primary' : 'text-black'}
+                ${value === option ? 'text-primary' : 'text-black'}
               `}
             >
               {option}

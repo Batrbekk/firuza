@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { flushSync } from 'react-dom'
+import FadeUpText from './FadeUpText'
+import SlideUpReveal from './SlideUpReveal'
 
 interface GalleryTab {
   id: number
@@ -93,12 +95,16 @@ export default function MastersGallery() {
       <div className="flex flex-col gap-9 pl-0 lg:pl-[95px]">
         <div className="flex flex-col gap-9 lg:pl-[130px]">
           <div className="flex flex-col gap-2">
-            <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
-              Firuza Nail Studio
-            </h6>
-            <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase text-white">
-              Работы НАШИХ мастеров
-            </h2>
+            <FadeUpText>
+              <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
+                Firuza Nail Studio
+              </h6>
+            </FadeUpText>
+            <FadeUpText delay={0.1}>
+              <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase text-white">
+                Работы НАШИХ мастеров
+              </h2>
+            </FadeUpText>
           </div>
           <div className="flex justify-center md:justify-start flex-wrap gap-4">
             {TABS.map((tab) => (

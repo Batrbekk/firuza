@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { flushSync } from 'react-dom'
 import useEmblaCarousel from 'embla-carousel-react'
+import FadeUpText from './FadeUpText'
 
 interface Master {
   id: number
@@ -122,12 +122,16 @@ const MastersSection = () => {
   return (
     <section className="pt-12 pb-[96px] md:py-20 max-w-[1280px] mx-auto px-5 lg:px-0 block-p">
       <div className="flex flex-col gap-2 mb-6 md:mb-9">
-        <h6 className="text-primary font-tilda-sans text-[14px] uppercase">
-          Доверьте свою красоту профессионалам
-        </h6>
-        <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
-          наша команда мастеров
-        </h2>
+        <FadeUpText delay={0.1}>
+          <h6 className="text-primary font-tilda-sans text-[14px] uppercase">
+            Доверьте свою красоту профессионалам
+          </h6>
+        </FadeUpText>
+        <FadeUpText delay={0.2}>
+          <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
+            наша команда мастеров
+          </h2>
+        </FadeUpText>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-4 mb-12 md:mb-9">
@@ -159,21 +163,29 @@ const MastersSection = () => {
             </div>
             
             <div className="flex flex-col gap-2">
-              <span className="text-primary font-tilda-sans font-bold text-sm">{master.role}</span>
-              <h3 className="text-lg font-bold font-tilda-sans">{master.name}</h3>
-              <p className="text-base font-light font-tilda-sans max-w-[346px]">{master.description}</p>
-              <button
-                className="w-[221px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-sm uppercase group"
-            >
-                Записаться к мастеру
-                <Image 
-                  src="/icons/r-arrow.svg" 
-                  alt="arrow-right" 
-                  width={17} 
-                  height={10} 
-                  className="transition-transform duration-300 group-hover:translate-x-2"
-                />
-            </button>
+              <FadeUpText delay={0.1}>
+                <span className="text-primary font-tilda-sans font-bold text-sm">{master.role}</span>
+              </FadeUpText>
+              <FadeUpText delay={0.2}>
+                <h3 className="text-lg font-bold font-tilda-sans">{master.name}</h3>
+              </FadeUpText>
+              <FadeUpText delay={0.2}>
+                <p className="text-base font-light font-tilda-sans max-w-[346px]">{master.description}</p>
+              </FadeUpText>
+              <FadeUpText delay={0.3}>
+                <button
+                  className="w-[221px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-sm uppercase group"
+                >
+                  Записаться к мастеру
+                  <Image 
+                    src="/icons/r-arrow.svg" 
+                    alt="arrow-right" 
+                    width={17} 
+                    height={10} 
+                    className="transition-transform duration-300 group-hover:translate-x-2"
+                  />
+                </button>
+              </FadeUpText>
             </div>
           </div>
         ))}
@@ -194,21 +206,27 @@ const MastersSection = () => {
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <span className="text-primary font-tilda-sans font-bold text-sm">{master.role}</span>
-                  <h3 className="text-lg font-bold font-tilda-sans">{master.name}</h3>
-                  <p className="text-base font-light font-tilda-sans max-w-[346px]">{master.description}</p>
-                  <button
-                    className="w-[221px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-sm uppercase group"
-                >
-                    Записаться к мастеру
-                    <Image 
-                      src="/icons/r-arrow.svg" 
-                      alt="arrow-right" 
-                      width={17} 
-                      height={10} 
-                      className="transition-transform duration-300 group-hover:translate-x-2"
-                    />
-                </button>
+                  <FadeUpText delay={0.1}>
+                    <span className="text-primary font-tilda-sans font-bold text-sm">{master.role}</span>
+                  </FadeUpText>
+                  <FadeUpText delay={0.2}>
+                    <h3 className="text-lg font-bold font-tilda-sans">{master.name}</h3>
+                  </FadeUpText>
+                  <FadeUpText delay={0.3}>
+                    <p className="text-base font-light font-tilda-sans max-w-[346px]">{master.description}</p>
+                  </FadeUpText>
+                  <FadeUpText delay={0.4}>
+                    <button className="w-[221px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-sm uppercase group">
+                      Записаться к мастеру
+                      <Image 
+                        src="/icons/r-arrow.svg" 
+                        alt="arrow-right" 
+                        width={17} 
+                        height={10} 
+                        className="transition-transform duration-300 group-hover:translate-x-2"
+                      />
+                    </button>
+                  </FadeUpText>
                 </div>
               </div>
             ))}

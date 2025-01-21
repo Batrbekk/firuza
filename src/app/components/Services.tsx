@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from "@/lib/utils";
+import FadeUpText from "./FadeUpText";
 
 interface ServiceItemProps {
   name: string;
@@ -31,14 +32,18 @@ interface ServiceCategoryProps {
 function ServiceCategory({ id, title, services, className }: ServiceCategoryProps) {
   return (
     <div id={id} className={cn("flex flex-col gap-[18px] md:gap-9 w-full", className)}>
-      <h3 className="text-black text-[24px] md:text-[38px] font-tenor-sans text-center">
-        {title}
-      </h3>
-      <div className="flex flex-col gap-6">
-        {services.map((service, index) => (
-          <ServiceItem key={index} {...service} />
-        ))}
-      </div>
+      <FadeUpText>
+        <h3 className="text-black text-[24px] md:text-[38px] font-tenor-sans text-center">
+          {title}
+        </h3>
+      </FadeUpText>
+      <FadeUpText delay={0.1}>
+        <div className="flex flex-col gap-6">
+          {services.map((service, index) => (
+            <ServiceItem key={index} {...service} />
+          ))}
+        </div>
+      </FadeUpText>
     </div>
   )
 }

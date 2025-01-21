@@ -31,7 +31,7 @@ export default function Header() {
         </div>
         <Menu />
       </div>
-      <div className="border-b border-white/10 hidden md:flex justify-center relative">
+      <div className="border-b border-white/10 hidden md:flex justify-center relative z-[999]">
         <div className="md:max-w-[720px] lg:max-w-[1020px] mx-auto flex items-center justify-between w-full header-row">
           <Accordion 
             text="Салоны" 

@@ -2,6 +2,8 @@
 
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import FadeUpText from './FadeUpText'
+import SlideUpReveal from './SlideUpReveal'
 
 interface BenefitProps {
   subtitle: string
@@ -19,49 +21,58 @@ const Benefit = ({ subtitle, title, description, image, stats, imagePosition = '
   const content = (
     <div className="w-full lg:w-[630px] flex flex-col gap-4">
       <div className="flex flex-col gap-10">
-        <div className="flex flex-col gap-2">
+        <FadeUpText delay={0.1}>
           <h6 className="text-primary text-[14px] font-tilda-sans font-bold uppercase">
             {subtitle}
           </h6>
+        </FadeUpText>
+        <FadeUpText delay={0.2}>
           <h2 className="text-white text-[28px] md:text-[44px] font-tenor-sans uppercase leading-[128%]">
             {title}
           </h2>
-        </div>
-        <p className="text-white text-lg font-tilda-sans font-light leading-[29px]">
-          {description}
-        </p>
+        </FadeUpText>
+        <FadeUpText delay={0.3}>
+          <p className="text-white text-lg font-tilda-sans font-light leading-[29px]">
+            {description}
+          </p>
+        </FadeUpText>
       </div>
 
-      <div className="flex justify-between flex-col md:flex-row">
-        {stats.map((stat, index) => (
-          <div key={index} className={cn('flex gap-4 items-center', index === 1 ? 'justify-end' : 'justify-start')}>
-            <p className={cn('text-white text-base font-tilda-sans font-light', stat.label === 'опытных мастеров' ? '' : 'w-min')}>
-              {stat.label}
-            </p>
-            <p className="text-white text-[90px] font-tenor-sans">
-              {stat.value.includes('+') ? (
-                <>
-                  {stat.value.replace('+', '')}
-                  <span className="text-[60px]">+</span>
-                </>
-              ) : (
-                stat.value
-              )}
-            </p>
-          </div>
-        ))}
-      </div>
+      <FadeUpText delay={0.4}>
+        <div className="flex justify-between flex-col md:flex-row">
+          {stats.map((stat, index) => (
+            <div key={index} className={cn('flex gap-4 items-center', index === 1 ? 'justify-end' : 'justify-start')}>
+              <p className={cn('text-white text-base font-tilda-sans font-light', stat.label === 'опытных мастеров' ? '' : 'w-min')}>
+                {stat.label}
+              </p>
+              <p className="text-white text-[90px] font-tenor-sans">
+                {stat.value.includes('+') ? (
+                  <>
+                    {stat.value.replace('+', '')}
+                    <span className="text-[60px]">+</span>
+                  </>
+                ) : (
+                  stat.value
+                )}
+              </p>
+            </div>
+          ))}
+        </div>
+      </FadeUpText>
     </div>
   )
 
   const imageBlock = (
-    <div className="w-full lg:w-[520px] h-[448px] relative">
-      <img 
-        src={image}
-        alt="Benefit illustration"
-        className="object-cover absolute top-0 left-0 w-full h-full"
-      />
-    </div>
+    <SlideUpReveal delay={0} maskColor='#292929'>
+      <div className="w-full lg:w-[520px] h-[448px] relative">
+        <Image
+          src={image}
+          fill
+          alt="Benefit illustration"
+          className="object-cover absolute top-0 left-0 w-full h-full"
+        />
+      </div>
+    </SlideUpReveal>
   )
 
   return (

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from "next/image";
@@ -13,6 +13,7 @@ import telegram from '../../../public/icons/telegram-green.svg';
 import { Checkbox } from "../components/Checkbox";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
+import FadeUpText from "../components/FadeUpText";
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -30,10 +31,12 @@ export default function Promotion() {
                     <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px]">
                         акции и скидки
                     </TextReveal>
-                    <p className="text-white font-tilda-sans text-lg">
-                        Добро пожаловать на страницу акций и специальных предложений от FirUza Nail Studio.
-                        Выбирайте и преображайтесь!
-                    </p>
+                    <FadeUpText delay={0.1}>
+                        <p className="text-white font-tilda-sans text-lg">
+                            Добро пожаловать на страницу акций и специальных предложений от FirUza Nail Studio.
+                            Выбирайте и преображайтесь!
+                        </p>
+                    </FadeUpText>
                 </div>
             </section>
             <section className="mx-auto md:max-w-[720px] lg:max-w-[1280px] w-full pt-0 pb-0 md:pb-10 md:pt-20 flex flex-col gap-0 md:gap-y-12 overflow-hidden block-p">

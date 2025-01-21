@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import FadeUpText from './FadeUpText'
 
 interface AdvantageItemProps {
   icon: number
@@ -8,18 +9,20 @@ interface AdvantageItemProps {
 
 function AdvantageItem({ icon, title, description }: AdvantageItemProps) {
   return (
-    <div id="advantage-item" className="flex flex-col items-center gap-6 max-w-[360px] w-full">
+    <FadeUpText delay={0.1}>
+      <div id="advantage-item" className="flex flex-col items-center gap-6 max-w-[360px] w-full">
       <img 
-        src={`/icons/advantage/${icon}.svg`}
-        alt={title}
-      />
-      <h5 className="text-center font-tilda-sans text-[18px] font-bold uppercase">
-        {title}
-      </h5>
-      <p className="text-center font-tilda-sans font-light text-[16px]">
-        {description}
-      </p>
-    </div>
+          src={`/icons/advantage/${icon}.svg`}
+          alt={title}
+        />
+        <h5 className="text-center font-tilda-sans text-[18px] font-bold uppercase">
+          {title}
+        </h5>
+        <p className="text-center font-tilda-sans font-light text-[16px]">
+          {description}
+        </p>
+      </div>
+    </FadeUpText>
   )
 }
 

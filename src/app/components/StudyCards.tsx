@@ -3,6 +3,8 @@ import Image from "next/image"
 import Button from "./Button"
 import { useState } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
+import FadeUpText from "./FadeUpText"
+import CourseModal from './CourseModal'
 
 interface StudyList {
 	title: string
@@ -412,8 +414,9 @@ function StudyCard({
 	course_for,
 	lessons,
 	price,
-	info
-}: StudyCardProps) {
+	info,
+	onEnroll
+}: StudyCardProps & { onEnroll: (title: string) => void }) {
 	return (
 		<div className="flex flex-col">
 			<div className={cn(
@@ -507,7 +510,10 @@ function StudyCard({
 					<p className="font-tilda-sans font-light text-[16px]">стоимость</p>
 					<h3 className="font-tenor-sans text-[38px]">{price}</h3>
 				</div>
-				<Button className="max-w-[240px]">
+				<Button 
+					className="max-w-[240px]" 
+					onClick={() => onEnroll(title)}
+				>
 					Записаться на курс
 				</Button>
 				<p className="font-tilda-sans font-light text-[14px] w-full">
@@ -520,11 +526,31 @@ function StudyCard({
 }
 
 export default function StudyCards() {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [selectedCourse, setSelectedCourse] = useState('');
+
+	const handleEnroll = (courseTitle: string) => {
+		setSelectedCourse(courseTitle);
+		setIsModalOpen(true);
+	};
+
 	return (
-		<div className="w-full flex lg:flex-row flex-col gap-5 items-start study-cards-wrapper justify-center">
-			{studyCardsData.map((cardData, index) => (
-				<StudyCard key={index} {...cardData} />
-			))}
-		</div>
+		<>
+			<div className="w-full flex lg:flex-row flex-col gap-5 items-start study-cards-wrapper justify-center">
+				{studyCardsData.map((cardData, index) => (
+					<FadeUpText key={index} delay={index * 0.1}>
+						<StudyCard 
+							{...cardData} 
+							onEnroll={handleEnroll}
+						/>
+					</FadeUpText>
+				))}
+			</div>
+
+			<CourseModal 
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+			/>
+		</>
 	)
 }

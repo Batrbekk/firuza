@@ -5,6 +5,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
 import { useState, useCallback, useEffect } from 'react'
 import { flushSync } from 'react-dom'
+import FadeUpText from './FadeUpText'
 
 export default function SalonGallery() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -60,12 +61,16 @@ export default function SalonGallery() {
     <section className="px-5 lg:px-0 pt-6 pb-[96px] md:pt-20 md:pb-[130px]">
       <div className="flex flex-col gap-9">
         <div className="max-w-[500px] mx-auto md:text-center flex flex-col gap-6">
-          <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
-            Фото салонов
-          </h2>
-          <p className="text-[18px] font-tilda-sans">
-            Уютная атмосфера и безупречный сервис в каждом из наших салонов
-          </p>
+          <FadeUpText delay={0.1}>
+            <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
+              Фото салонов
+            </h2>
+          </FadeUpText>
+          <FadeUpText delay={0.2}>
+            <p className="text-[18px] font-tilda-sans">
+              Уютная атмосфера и безупречный сервис в каждом из наших салонов
+            </p>
+          </FadeUpText>
         </div>
 
         <div id="desktop-gallery" className="hidden md:flex gap-5 max-w-[1540px] mx-auto w-full">

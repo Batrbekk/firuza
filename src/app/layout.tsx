@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import YClientsWidget from './components/YClientsWidget'
-import { YCLIENTS_IDS } from './constants/yclients'
+import { ScrollProvider } from './context/ScrollContext'
+import { Toaster } from 'sonner'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +39,20 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <ScrollProvider>
+          {children}
+        </ScrollProvider>
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: '#292929',
+              color: 'white',
+              border: 'none',
+            },
+            className: 'font-tilda-sans'
+          }}
+        />
       </body>
     </html>
   );

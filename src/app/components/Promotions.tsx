@@ -5,6 +5,7 @@ import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { flushSync } from 'react-dom'
 import PromotionModal from './PromotionModal'
+import FadeUpText from './FadeUpText'
 
 interface PromotionCardProps {
   image: string
@@ -28,25 +29,31 @@ const PromotionCard = ({ image, title, description }: PromotionCardProps) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h5 className="font-tilda-sans text-[18px] font-bold uppercase">
-              {title}
-            </h5>
-            <p className="text-[16px] font-tilda-sans font-light lg:max-w-[346px]">
-              {description}
-            </p>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-[126px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-[14px] uppercase group"
-            >
-              Подробнее
-              <Image 
-                src="/icons/r-arrow.svg" 
-                alt="arrow-right" 
-                width={17} 
-                height={10} 
-                className="transition-transform duration-300 group-hover:translate-x-2"
-              />
-            </button>
+            <FadeUpText delay={0.1}>
+              <h5 className="font-tilda-sans text-[18px] font-bold uppercase">
+                {title}
+              </h5>
+            </FadeUpText>
+            <FadeUpText delay={0.2}>
+              <p className="text-[16px] font-tilda-sans font-light lg:max-w-[346px]">
+                {description}
+              </p>
+            </FadeUpText>
+            <FadeUpText delay={0.3}>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="w-[126px] py-2 text-primary flex items-center gap-x-2 font-tilda-sans font-bold text-[14px] uppercase group"
+              >
+                Подробнее
+                <Image 
+                  src="/icons/r-arrow.svg" 
+                  alt="arrow-right" 
+                  width={17} 
+                  height={10} 
+                  className="transition-transform duration-300 group-hover:translate-x-2"
+                />
+              </button>
+            </FadeUpText>
           </div>
         </div>
       </div>
@@ -111,12 +118,16 @@ export default function Promotions() {
     <section className="py-12 md:py-20 md:border-b border-black/10 block-p">
       <div className="flex flex-col gap-[36px] md:gap-[60px] max-w-[1280px] mx-auto">
         <div className="flex flex-col gap-2 text-center mx-auto">
-          <h6 className="text-primary font-bold text-[14px] font-tilda-sans uppercase">
-            наши спец предложения
-          </h6>
-          <h2 className="uppercase font-tenor-sans text-[28px] md:text-[44px]">
-            Акции и скидки
-          </h2>
+          <FadeUpText delay={0.1}>
+            <h6 className="text-primary font-bold text-[14px] font-tilda-sans uppercase">
+              наши спец предложения
+            </h6>
+          </FadeUpText>
+          <FadeUpText delay={0.1}>
+            <h2 className="uppercase font-tenor-sans text-[28px] md:text-[44px]">
+              Акции и скидки
+            </h2>
+          </FadeUpText>
         </div>
 
         {/* Desktop version */}

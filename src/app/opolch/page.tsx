@@ -13,6 +13,7 @@ import OpolchAbout from '../components/OpolchAbout'
 import AboutGallery from '../components/AboutGallery'
 import { YCLIENTS_IDS } from '../constants/yclients'
 import YClientsWidget from '../components/YClientsWidget'
+import FadeUpText from '../components/FadeUpText';
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -70,7 +71,7 @@ export default function Opolch() {
               </Button>
               <Button 
                 variant='outline' 
-                className="w-full md:w-[240px] text-white border-white hover:text-primary hover:border-primary"
+                className="w-full md:w-[240px] text-white border-white hover:text-primary hover:bg-white"
                 onClick={() => {
                   document.getElementById('prices')?.scrollIntoView({ 
                     behavior: 'smooth',
@@ -88,47 +89,63 @@ export default function Opolch() {
         <div id="about-desc" className="w-full max-w-[695px]">
           <div className="flex flex-col gap-y-6">
             <div className="flex flex-col gap-2">
-              <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
-                о салоне 
-              </h6>
-              <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
-                Firuza Nail Studio
-              </h2>
+              <FadeUpText delay={0.1}>
+                <h6 className="text-primary font-bold font-tilda-sans text-[14px] uppercase">
+                  о салоне 
+                </h6>
+              </FadeUpText>
+              <FadeUpText delay={0.2}>
+                <h2 className="text-[28px] md:text-[44px] font-tenor-sans uppercase">
+                  Firuza Nail Studio
+                </h2>
+              </FadeUpText>
             </div>
-            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+            <FadeUpText delay={0.3}>
+              <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
               Добро пожаловать в наш салон, где качество встречается с брендом!
-            </p>
-            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-              Мы гордимся тем, что предоставляем нашим клиентам только самое лучшее. Каждый визит к нам — это уникальный опыт, где внимание к деталям и высокие стандарты обслуживания стоят на первом месте. Уже 6 лет мы дарим улыбки и хорошее настроение нашим гостям, именно поэтому мы открыли второй филиал FirUza Nail Studio.
-            </p>
-            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-              Почему выбирают нас?
-            </p>
-            <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
-              С нами безопасно, красиво, качественно и удобно.
+              </p>
+            </FadeUpText>
+            <FadeUpText delay={0.4}>
+              <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+                Мы гордимся тем, что предоставляем нашим клиентам только самое лучшее. Каждый визит к нам — это уникальный опыт, где внимание к деталям и высокие стандарты обслуживания стоят на первом месте. Уже 6 лет мы дарим улыбки и хорошее настроение нашим гостям, именно поэтому мы открыли второй филиал FirUza Nail Studio.
+              </p>
+            </FadeUpText>
+            <FadeUpText delay={0.5}>
+              <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+                Почему выбирают нас?
+              </p>
+            </FadeUpText>
+            <FadeUpText delay={0.6}>
+              <p className="font-tilda-sans font-light md:font-normal text-[16px] md:text-[18px]">
+                С нами безопасно, красиво, качественно и удобно.
               Мы создаём прекрасное настроение на весь день!
-              Приходите и убедитесь сами. Мы ждем вас для того, чтобы сделать ваш день особенным!
-            </p>
+                Приходите и убедитесь сами. Мы ждем вас для того, чтобы сделать ваш день особенным!
+              </p>
+            </FadeUpText>
           </div>
           <div className="flex items-center flex-col md:flex-row justify-between mt-4">
-            <div className="flex items-center w-full gap-x-4">
-              <p className="font-tilda-sans font-light text-[16px]">
-                опытных <br />
-                мастеров
-              </p>
-              <p className="font-tenor-sans text-[90px]">
-                12<span className="text-[64px]">+</span>
-              </p>
-            </div>
-            <div className="flex items-center w-full justify-end md:justify-start gap-x-4">
-              <p className="font-tilda-sans font-light text-[16px]">
-                довольных <br />
-                клиентов
-              </p>
-              <p className="font-tenor-sans text-[90px]">
-                5к<span className="text-[64px]">+</span>
-              </p>
-            </div>
+            <FadeUpText delay={0.7}>
+              <div className="flex items-center w-full gap-x-4">
+                <p className="font-tilda-sans font-light text-[16px]">
+                  опытных <br />
+                  мастеров
+                </p>
+                <p className="font-tenor-sans text-[90px]">
+                  12<span className="text-[64px]">+</span>
+                </p>
+              </div>
+            </FadeUpText>
+            <FadeUpText delay={0.8}>
+              <div className="flex items-center w-full justify-end md:justify-start gap-x-4">
+                <p className="font-tilda-sans font-light text-[16px]">
+                  довольных <br />
+                  клиентов
+                </p>
+                <p className="font-tenor-sans text-[90px]">
+                  5к<span className="text-[64px]">+</span>
+                </p>
+              </div>
+            </FadeUpText>
           </div>
           <Button className="w-full md:w-[240px] mt-7">
             Выбрать мастера

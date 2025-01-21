@@ -7,51 +7,19 @@ import Input from "../components/Input";
 import { Checkbox } from "../components/Checkbox";
 import { useEffect, useRef, useState } from "react";
 import TabsSection from "../components/TabsSection";
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import FadeUpText from "../components/FadeUpText";
+import SlideUpReveal from "../components/SlideUpReveal";
+import { useRouter } from "next/navigation";
 
 export default function Blog() {
 	const [isChecked, setIsChecked] = useState(false);
 	const [isChecked2, setIsChecked2] = useState(false);
 
-	const contentRef = useRef(null);
-	const imageRef = useRef(null);
+	const router = useRouter();
 
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-
-		if (mounted) {
-			gsap.registerPlugin(ScrollTrigger);
-			gsap.from(contentRef.current, {
-				x: -100,
-				opacity: 0,
-				duration: 1,
-				scrollTrigger: {
-						trigger: contentRef.current,
-						start: 'top 80%',
-				}
-			});
-
-			gsap.from(imageRef.current, {
-					x: 100,
-					opacity: 0,
-					duration: 1,
-					scrollTrigger: {
-							trigger: imageRef.current,
-							start: 'top 80%',
-					}
-			});
-		}
-
-		return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
-      gsap.killTweensOf("*")
-    }
-	}, [mounted]);
-
-	if (!mounted) return null
+	const handleClick = () => {
+		router.push('/article')
+	}
 
 	const articles = [
 		{
@@ -226,29 +194,39 @@ export default function Blog() {
 			<section className="bg-grey">
 					<Header />
 					<div className="max-w-[1280px] mx-auto px-5 lg:px-0 pt-0 pb-24 lg:py-20 flex items-center justify-between flex-col-reverse lg:flex-row gap-y-20 block-p">
-						<div ref={contentRef} className="flex flex-col gap-y-6 max-w-[645px] w-full">
+						<div className="flex flex-col gap-y-6 max-w-[645px] w-full">
 							<div className="flex flex-col items-center lg:items-start gap-y-2">
-								<div className="flex items-center gap-x-2">
-									<p className="font-tilda-sans font-light text-[14px] text-white uppercase">
-										здоровье
-									</p>
-									<div className="w-1 h-1 bg-white rounded-full" />
-									<p className="font-tilda-sans font-light text-[14px] text-white uppercase">
-										Май 20, 2024
-									</p>
-								</div>
-								<h3 className="font-tenor-sans text-[24px] lg:text-[38px] text-white text-center lg:text-left">
-									Оформление бровей в салоне: особенности, преимущества и возможные недостатки
-								</h3>
+								<FadeUpText delay={0.1}>
+									<div className="flex items-center gap-x-2">
+										<p className="font-tilda-sans font-light text-[14px] text-white uppercase">
+												здоровье
+										</p>
+										<div className="w-1 h-1 bg-white rounded-full" />
+										<p className="font-tilda-sans font-light text-[14px] text-white uppercase">
+											Май 20, 2024
+										</p>
+									</div>
+								</FadeUpText>
+								<FadeUpText delay={0.2}>
+									<h3 className="font-tenor-sans text-[24px] lg:text-[38px] text-white text-center lg:text-left">
+										Оформление бровей в салоне: особенности, преимущества и возможные недостатки
+									</h3>
+								</FadeUpText>
 							</div>
-							<p className="w-full line-clamp-5 lg:line-clamp-1 pr-0 lg:pr-4 text-white font-tilda-sans text-[18px] h-[136px] lg:h-[27px]">
-								Оформление бровей стало неотъемлемой частью ухода за внешностью для многих людей. Это процедура, которая помогает подчеркнуть естественную красоту лица, сделать взгляд более выразительным и ухоженным. В салонах красоты предлагают различные методы оформления бровей, каждый из которых имеет свои особенности, преимущества и возможные недостатки.
-							</p>
-							<Button variant="outline" className="text-secondary border-secondary w-full lg:max-w-[240px] hover:bg-secondary hover:text-white">прочитать статью</Button>
+							<FadeUpText delay={0.3}>
+								<p className="w-full line-clamp-5 lg:line-clamp-1 pr-0 lg:pr-4 text-white font-tilda-sans text-[18px] h-[136px] lg:h-[27px]">
+									Оформление бровей стало неотъемлемой частью ухода за внешностью для многих людей. Это процедура, которая помогает подчеркнуть естественную красоту лица, сделать взгляд более выразительным и ухоженным. В салонах красоты предлагают различные методы оформления бровей, каждый из которых имеет свои особенности, преимущества и возможные недостатки.
+								</p>
+							</FadeUpText>
+							<FadeUpText delay={0.4}>
+								<Button onClick={handleClick} variant="outline" className="text-secondary border-secondary w-full lg:max-w-[240px] hover:bg-secondary hover:text-white">прочитать статью</Button>
+							</FadeUpText>
 						</div>
-						<div ref={imageRef} className="relative w-full h-[336px] md:h-[420px] lg:w-[555px] lg:h-[555px]">
-							<img src="/images/article/1.png" alt="blog" className="absolute top-0 left-0 w-full h-full object-cover object-left" />
-						</div>
+						<SlideUpReveal delay={0} maskColor="#292929">
+							<div className="relative w-full h-[336px] md:h-[420px] lg:w-[555px] lg:h-[555px]">
+								<img src="/images/article/1.png" alt="blog" className="absolute top-0 left-0 w-full h-full object-cover object-left" />
+							</div>
+						</SlideUpReveal>
 					</div>
 			</section>
 			<section className="max-w-[1280px] mx-auto pb-12 md:py-20 px-5 lg:px-0 block-p">
