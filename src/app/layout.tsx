@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import YClientsWidget from './components/YClientsWidget'
+import { YCLIENTS_IDS } from './constants/yclients'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,41 +34,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <head>
-        <Script
-          id="yclients-settings"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w, d, s, h) {
-                w.YCWidgetInit = w.YCWidgetInit || function() {
-                  (w.YCWidgetInit.q = w.YCWidgetInit.q || []).push(arguments)
-                };
-                w.YCWidgetInit({
-                  widget_id: '1333420',
-                  app_id: 'widget',
-                  mode: 'inline',
-                  host: h
-                });
-                var a = d.getElementsByTagName('head')[0],
-                  r = d.createElement('script');
-                r.async = 1;
-                r.src = s;
-                r.charset = 'utf-8';
-                a.appendChild(r);
-              })(window, document, 'https://w1333420.yclients.com/widgetJS', 'https://w1333420.yclients.com');
-            `
-          }}
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="ru">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

@@ -11,11 +11,13 @@ import TextReveal from '../components/TextReveal'
 import Button from '../components/Button'
 import About from '../components/About'
 import AboutGallery from '../components/AboutGallery'
+import { YCLIENTS_IDS } from '../constants/yclients'
+import YClientsWidget from '../components/YClientsWidget'
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home() {
+export default function Savin() {
   const bgRef = useRef<HTMLImageElement>(null);
   const firstSectionRef = useRef<HTMLElement>(null);
 
@@ -61,10 +63,8 @@ export default function Home() {
               className='flex items-center justify-center flex-col md:flex-row gap-5 w-full'
             >
               <Button 
-                onClick={() => {
-                  window.open('https://n583630.yclients.com/company/551568/personal/menu?o=', '_blank')
-                }}
-                className="w-full md:w-[240px] hover:bg-white hover:text-primary"
+                className="w-full md:w-[240px] hover:bg-white hover:text-primary ms_booking"
+                data-yclients-company-id={YCLIENTS_IDS.SAVIN}
               >
                 Записаться
               </Button>
@@ -139,6 +139,7 @@ export default function Home() {
       </section>
       <MastersSection />
       <Footer />
+      <YClientsWidget companyId={YCLIENTS_IDS.SAVIN} />
     </main> 
   );
 }
