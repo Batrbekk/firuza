@@ -18,7 +18,7 @@ export default function FadeUpText({ children, className, delay = 0 }: FadeUpTex
 
   useEffect(() => {
     const element = textRef.current
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       gsap.from(element, {
         y: 50,
         opacity: 0,
