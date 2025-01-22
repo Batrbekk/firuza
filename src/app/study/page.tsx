@@ -145,42 +145,33 @@ export default function Study() {
 										</FadeUpText>
                 </div>
                 <div className="flex lg:flex-row flex-col items-center gap-5 w-full certificate-wrapper">
-                    <FadeUpText delay={0.1}>
-											<div className="md:w-[500px] lg:w-[33%] h-[698px] relative">
-													<Image 
-															src="/images/certificate/1.png" 
-															alt="certificate" 
-															fill 
-															className="object-cover"
-															quality={100}
-															unoptimized
-													/>
-											</div>
-										</FadeUpText>
-                    <FadeUpText delay={0.2}>
-											<div className="md:w-[500px] lg:w-[33%] h-[698px] relative">
-													<Image 
-															src="/images/certificate/2.png" 
-															alt="certificate" 
-															fill 
-															className="object-cover"
-															quality={100}
-															unoptimized
-													/>
-											</div>
-										</FadeUpText>
-                    <FadeUpText delay={0.3}>
-											<div className="md:w-[500px] lg:w-[33%] h-[698px] relative">
-													<Image 
-															src="/images/certificate/3.png" 
-															alt="certificate" 
-															fill 
-															className="object-cover"
-															quality={100}
-															unoptimized
-													/>
-											</div>
-										</FadeUpText>
+										<div className="md:w-[500px] lg:w-[33%] h-[698px] relative">
+												<Image 
+														src="/images/certificate/1.png" 
+														alt="certificate" 
+														fill 
+														className="object-cover"
+														quality={90}
+												/>
+										</div>
+                    <div className="md:w-[500px] lg:w-[33%] h-[698px] relative">
+											<Image 
+													src="/images/certificate/2.png" 
+													alt="certificate" 
+													fill 
+													className="object-cover"
+													quality={90}
+											/>
+										</div>
+                    <div className="md:w-[500px] lg:w-[33%] h-[698px] relative">
+											<Image 
+													src="/images/certificate/3.png" 
+													alt="certificate" 
+													fill 
+													className="object-cover"
+													quality={90}
+											/>
+										</div>
                 </div>
             </section>
             <div id="study-works" className="hidden md:block">
