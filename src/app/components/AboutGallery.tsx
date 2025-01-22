@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,21 +56,24 @@ export default function AboutGallery() {
         className="flex items-center gap-x-4 pl-5"
       >
         <div className="relative w-[248px] h-[372px] flex-shrink-0">
-          <img 
+          <Image
+            fill 
             src="/images/about-gallery/1.png" 
             alt="gallery" 
             className="w-full h-full object-cover absolute top-0 left-0"
           />
         </div>
         <div className="relative w-[248px] h-[372px] flex-shrink-0">
-          <img 
+          <Image
+            fill 
             src="/images/about-gallery/2.png" 
             alt="gallery" 
             className="w-full h-full object-cover absolute top-0 left-0"
           />
         </div>
         <div className="relative w-[248px] h-[372px] flex-shrink-0">
-          <img 
+          <Image
+            fill 
             src="/images/about-gallery/3.png" 
             alt="gallery" 
             className="w-full h-full object-cover absolute top-0 left-0"
@@ -81,21 +85,24 @@ export default function AboutGallery() {
         className="flex items-center gap-x-4 pr-5"
       >
         <div className="relative w-[248px] h-[372px] flex-shrink-0">
-          <img 
+          <Image
+            fill 
             src="/images/about-gallery/5.png" 
             alt="gallery" 
             className="w-full h-full object-cover absolute top-0 left-0"
           />
         </div>
         <div className="relative w-[248px] h-[372px] flex-shrink-0">
-          <img 
+          <Image
+            fill 
             src="/images/about-gallery/6.png" 
             alt="gallery" 
             className="w-full h-full object-cover absolute top-0 left-0"
           />
         </div>
         <div className="relative w-[248px] h-[372px] flex-shrink-0">
-          <img 
+          <Image
+            fill 
             src="/images/about-gallery/4.png" 
             alt="gallery" 
             className="w-full h-full object-cover absolute top-0 left-0"

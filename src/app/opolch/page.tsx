@@ -14,7 +14,7 @@ import AboutGallery from '../components/AboutGallery'
 import { YCLIENTS_IDS } from '../constants/yclients'
 import YClientsWidget from '../components/YClientsWidget'
 import FadeUpText from '../components/FadeUpText';
-
+import Image from 'next/image'
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,7 +45,9 @@ export default function Opolch() {
     <main>
       <section ref={firstSectionRef} className="relative overflow-hidden">
         <Header />
-        <img 
+        <Image
+          fill
+          quality={90}
           ref={bgRef}
           src="/images/bg-opolch.png" 
           alt="team" 

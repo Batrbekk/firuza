@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import TextReveal from "../components/TextReveal";
 import FadeUpText from "../components/FadeUpText";
 import SlideUpReveal from "../components/SlideUpReveal";
+import Image from 'next/image'
 
 export default function Rules() {
     return (
@@ -41,12 +42,14 @@ export default function Rules() {
                             </p>
                         </FadeUpText>
                         <SlideUpReveal className="w-full h-[480px] relative block lg:hidden">
-													<img 
-															src="/images/rules/1.png" 
-															alt="rules" 
-															className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
-													/>
-												</SlideUpReveal>
+                            <Image
+                                fill
+                                quality={90}
+                                src="/images/rules/1.png" 
+                                alt="rules" 
+                                className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
+                            />
+                        </SlideUpReveal>
                         <div className="flex flex-col gap-y-2">
                             <FadeUpText>
                                 <h6 className="font-tilda-sans font-bold text-[14px] uppercase">1.График работы:</h6>
@@ -97,19 +100,23 @@ export default function Rules() {
                         </div>
                     </div>
                     <SlideUpReveal className="w-[500px] h-[750px] hidden lg:block relative">
-											<img 
-													src="/images/rules/1.png" 
-													alt="rules" 
-													className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
+											<Image
+                            fill
+                            quality={90}
+                            src="/images/rules/1.png" 
+                            alt="rules" 
+                            className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
 											/>
 										</SlideUpReveal>
                 </div>
                 <div className="flex flex-col lg:flex-row items-start gap-x-[150px] gap-y-6 py-12 lg:py-0">
                     <SlideUpReveal className="lg:w-[565px] lg:h-[750px] w-full h-[480px] relative">
-											<img 
-													src="/images/rules/2.png" 
-													alt="rules" 
-													className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
+											<Image
+                            fill
+                            quality={90}
+                            src="/images/rules/2.png" 
+                            alt="rules" 
+                            className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
 											/>
 											</SlideUpReveal>
                     <div className="flex flex-col gap-y-6 w-full lg:max-w-[630px]">
@@ -213,10 +220,12 @@ export default function Rules() {
                         </div>
                     </div>
                     <SlideUpReveal className="w-[630px] h-[357px] hidden lg:block relative">
-											<img 
-													src="/images/rules/3.svg" 
-													alt="rules" 
-													className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
+											<Image
+                            fill
+                            quality={90}
+                            src="/images/rules/3.svg" 
+                            alt="rules" 
+                            className="object-cover object-bottom absolute top-0 left-0 w-full h-full" 
 											/>
 										</SlideUpReveal>
                 </div>

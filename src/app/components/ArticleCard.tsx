@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-
+import Image from 'next/image'
 interface ArticleCardProps {
 	image: string;
 	category: string;
@@ -39,7 +39,9 @@ export default function ArticleCard({
 			onMouseLeave={() => setIsHovered(false)}
 		>
 			<Link href="/article" className="block relative w-full aspect-[299/360]">
-				<img 
+				<Image
+					fill
+					quality={90}
 					src={image} 
 					alt={title} 
 					className="absolute inset-0 w-full h-full object-cover"

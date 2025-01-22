@@ -10,6 +10,7 @@ import { useState, FormEvent } from "react";
 import SlideUpReveal from "../components/SlideUpReveal";
 import FadeUpText from "../components/FadeUpText";
 import { toast } from 'sonner'
+import Image from "next/image";
 
 export default function Article() {
 	const articles = [
@@ -113,7 +114,7 @@ export default function Article() {
 					<Header />
 					<div className="flex items-center flex-col md:flex-row lg:gap-x-[110px]">
 						<SlideUpReveal delay={0} maskColor="#292929" className="w-full lg:w-[46.817%] h-[336px] lg:h-[555px] relative">
-							<img src="/images/article/1.png" alt="article" className="absolute top-0 left-0 w-full h-full object-left" />
+							<Image fill src="/images/article/1.png" alt="article" className="absolute top-0 left-0 w-full h-full object-left" />
 						</SlideUpReveal>
 						<div className="px-5 lg:px-0 pb-[38px] lg:pb-[74px] pt-[48px] lg:pt-0 flex flex-col gap-y-9 lg:gap-y-6 max-w-[645px] w-full text-center">
 							<div className="flex flex-col items-center gap-y-2">

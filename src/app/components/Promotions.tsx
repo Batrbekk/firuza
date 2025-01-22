@@ -21,7 +21,9 @@ const PromotionCard = ({ image, title, description }: PromotionCardProps) => {
       <div className="flex-1 min-w-full md:min-w-0">
         <div className="flex flex-col gap-6">
           <div className="relative w-full h-[520px] md:h-[600px]">
-            <img
+            <Image
+              fill
+              quality={90}
               src={image}
               alt={title}
               className="w-full h-full absolute top-0 left-0 object-cover"

@@ -22,6 +22,7 @@ import YClientsWidget from './components/YClientsWidget';
 import Preloader from './components/Preloader';
 import { useFirstVisit } from './hooks/useFirstVisit';
 import FadeUpText from './components/FadeUpText'
+import Image from 'next/image'
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -203,15 +204,17 @@ export default function Home() {
             {isLoading && isFirstVisit && typeof window !== 'undefined' && <Preloader onLoadComplete={handleLoadComplete} />}
             <section className="relative overflow-hidden">
                 <Header />
-                <img
+                <Image
                     ref={bgRef}
                     src="/images/bg-main.png"
                     alt="team"
+                    fill
                     className="-z-10 absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0 will-change-transform"
                 />
-                <img
+                <Image
                     src="/images/bg-main-layer.png"
                     alt="team"
+                    fill
                     className="-z-[5] absolute top-0 left-0 w-full h-full rotate-180 md:rotate-0 hidden md:block"
                 />
                 <img
@@ -219,6 +222,7 @@ export default function Home() {
                     src="/images/left.png"
                     alt="left"
                     id="left-hand"
+                    sizes="(max-width: 768px) 50vw, 50vw"
                     className='absolute -z-[10] block opacity-0'
                 />
                 <img

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { flushSync } from 'react-dom'
 import FadeUpText from './FadeUpText'
-import SlideUpReveal from './SlideUpReveal'
+import Image from 'next/image'
 
 interface GalleryTab {
   id: number
@@ -129,7 +129,9 @@ export default function MastersGallery() {
                 key={index}
                 className="relative flex-[0_0_100%] md:flex-[0_0_370px] h-[520px] md:h-[600px]"
               >
-                <img
+                <Image
+                  fill
+                  quality={90}
                   src={image}
                   alt={`${activeTab.title} ${index + 1}`}
                   className="absolute inset-0 w-full h-full object-cover"

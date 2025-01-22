@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import TextReveal from "../components/TextReveal";
 import ContactForm from "../components/ContactForm";
 import FadeUpText from "../components/FadeUpText";
+import Image from 'next/image'
 
 export default function Contact() {
 		const [mounted, setMounted] = useState(false);
@@ -74,7 +75,9 @@ export default function Contact() {
         <main>
 					<section ref={firstSectionRef} className="relative overflow-hidden">
             <Header />
-						<img 
+						<Image
+							fill
+							quality={90}
 							ref={bgRef}
 							src="/images/bg-contact.png" 
 							alt="team" 

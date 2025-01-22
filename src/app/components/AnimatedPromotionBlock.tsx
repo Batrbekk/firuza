@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 // Регистрируем ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -88,7 +89,8 @@ export default function AnimatedPromotionBlock({
         ref={imageRef}
         className="w-full h-[480px] md:w-[59.219%] md:h-[600px] relative opacity-0"
       >
-        <img
+        <Image
+          fill 
           src={imageSrc} 
           alt={imageAlt} 
           className="absolute object-cover top-0 left-0 w-full h-full object-center"

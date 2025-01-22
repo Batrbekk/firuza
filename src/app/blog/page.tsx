@@ -5,11 +5,12 @@ import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Input from "../components/Input";
 import { Checkbox } from "../components/Checkbox";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import TabsSection from "../components/TabsSection";
 import FadeUpText from "../components/FadeUpText";
 import SlideUpReveal from "../components/SlideUpReveal";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Blog() {
 	const [isChecked, setIsChecked] = useState(false);
@@ -224,7 +225,7 @@ export default function Blog() {
 						</div>
 						<SlideUpReveal delay={0} maskColor="#292929">
 							<div className="relative w-full h-[336px] md:h-[420px] lg:w-[555px] lg:h-[555px]">
-								<img src="/images/article/1.png" alt="blog" className="absolute top-0 left-0 w-full h-full object-cover object-left" />
+								<Image fill src="/images/article/1.png" alt="blog" className="absolute top-0 left-0 w-full h-full object-cover object-left" />
 							</div>
 						</SlideUpReveal>
 					</div>

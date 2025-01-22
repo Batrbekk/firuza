@@ -42,7 +42,9 @@ export default function Study() {
         <main>
             <section ref={firstSectionRef} className="relative overflow-hidden">
                 <Header />
-                <img 
+                <Image
+                    fill
+                    quality={100}
                     ref={bgRef}
                     src="/images/bg-study.png" 
                     alt="team" 

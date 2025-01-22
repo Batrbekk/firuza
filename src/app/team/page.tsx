@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import TextReveal from "../components/TextReveal";
 import Footer from "../components/Footer";
 import FadeUpText from '../components/FadeUpText';
+import Image from 'next/image'
 
 export default function Team() {
 	const imagesContainerRef = useRef<HTMLDivElement>(null);
@@ -72,7 +73,9 @@ export default function Team() {
 		<main>
 			<section ref={firstSectionRef} className="relative overflow-hidden">
 				<Header />
-				<img 
+				<Image
+					fill
+					quality={100}
 					ref={bgRef}
 					src="/images/back-team.png" 
 					alt="team" 
@@ -105,7 +108,9 @@ export default function Team() {
 							</FadeUpText>
 						</div>
 						<div className="relative w-full h-[480px] block lg:hidden">
-							<img 
+							<Image
+								fill
+								quality={90}
 								ref={addToRefs}
 								src="/images/teams/1.png" 
 								alt="team" 
@@ -146,7 +151,9 @@ export default function Team() {
 						</div>
 					</div>
 					<div className="hidden lg:block h-[750px] max-w-[500px] w-full relative">
-						<img
+						<Image
+							fill
+							quality={90}
 							ref={addToRefs}
 							src="/images/teams/1.png"
 							alt="team" 
@@ -155,7 +162,9 @@ export default function Team() {
 					</div>
 				</div>
 				<div className="relative w-full h-[240px] md:h-[750px]">
-					<img 
+					<Image
+						fill
+						quality={90}
 						ref={addToRefs}
 						src="/images/teams/2.png" 
 						alt="team-2" 
@@ -164,7 +173,9 @@ export default function Team() {
 				</div>
 				<div className="flex items-center flex-col lg:flex-row justify-between gap-y-6">
 					<div className="relative w-full lg:w-[630px] h-[480px] md:h-[750px]">
-						<img 
+						<Image
+							fill
+							quality={90}
 							ref={addToRefs}
 							src="/images/teams/3.png" 
 							alt="team-3" 
@@ -172,7 +183,9 @@ export default function Team() {
 						/>
 					</div>
 					<div className="relative w-full lg:w-[630px] h-[480px] md:h-[750px]">
-						<img 
+						<Image
+							fill
+							quality={90}
 							ref={addToRefs}
 							src="/images/teams/4.png" 
 							alt="team-4" 
@@ -181,7 +194,9 @@ export default function Team() {
 					</div>
 				</div>
 				<div className="relative w-full h-[240px] md:h-[750px]">
-					<img 
+					<Image
+						fill
+						quality={90}
 						ref={addToRefs}
 						src="/images/teams/5.png" 
 						alt="team-2" 
