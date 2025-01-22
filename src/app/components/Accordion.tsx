@@ -9,6 +9,8 @@ interface AccordionProps {
   id: string
   isOpen: boolean
   onToggle: () => void
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
   titleClassName?: string
 }
 
@@ -18,10 +20,15 @@ export default function Accordion({
   id,
   isOpen,
   onToggle,
+  onMouseEnter,
+  onMouseLeave,
   titleClassName 
 }: AccordionProps) {
   return (
-    <div>
+    <div
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <button
         onClick={onToggle}
         className={cn(

@@ -11,8 +11,8 @@ import Accordion from './Accordion';
 export default function Header() {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
-  const handleAccordionToggle = (id: string) => {
-    setOpenAccordion(openAccordion === id ? null : id);
+  const handleAccordionHover = (id: string | null) => {
+    setOpenAccordion(id);
   };
 
   return (
@@ -37,7 +37,9 @@ export default function Header() {
             text="Салоны" 
             id="salons"
             isOpen={openAccordion === 'salons'}
-            onToggle={() => handleAccordionToggle('salons')}
+            onToggle={() => {}}
+            onMouseEnter={() => handleAccordionHover('salons')}
+            onMouseLeave={() => handleAccordionHover(null)}
           >
             <div className="flex items-center justify-between w-full">
               <Link href="/savin" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">
@@ -58,7 +60,9 @@ export default function Header() {
             text="Обучение" 
             id="education"
             isOpen={openAccordion === 'education'}
-            onToggle={() => handleAccordionToggle('education')}
+            onToggle={() => {}}
+            onMouseEnter={() => handleAccordionHover('education')}
+            onMouseLeave={() => handleAccordionHover(null)}
           >
             <div className="flex items-center justify-between w-full">
               <Link href="/study#study-cards" className="text-black font-light font-tilda-sans text-sm uppercase hover:text-primary">

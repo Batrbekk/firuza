@@ -14,6 +14,7 @@ import AboutGallery from '../components/AboutGallery'
 import { YCLIENTS_IDS } from '../constants/yclients'
 import YClientsWidget from '../components/YClientsWidget'
 import FadeUpText from '../components/FadeUpText'
+import Image from 'next/image'
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -45,10 +46,11 @@ export default function Savin() {
     <main>
       <section ref={firstSectionRef} className="relative overflow-hidden">
         <Header />
-        <img 
+        <Image
           ref={bgRef}
           src="/images/bg-savin.png" 
           alt="team" 
+          fill
           className="-z-10 absolute object-cover object-center top-0 left-0 w-full h-full will-change-transform" 
         />
         <div className="px-5 md:px-0 flex flex-col items-center gap-y-[96px] md:gap-y-[60px] text-center md:py-20 py-[96px]">
