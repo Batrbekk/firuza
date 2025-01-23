@@ -7,9 +7,11 @@ import MobileAccordion from "./MobileAccordion";
 import Button from "./Button";
 import vk from '../../../public/icons/vk-green.svg';
 import telegram from '../../../public/icons/telegram-green.svg';
+import { usePathname } from 'next/navigation';
 
 export default function Menu() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
     
     useEffect(() => {
         if (isOpen) {
@@ -22,6 +24,22 @@ export default function Menu() {
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
+
+    const getBookingUrl = () => {
+        switch(pathname) {
+            case '/opolch':
+                return 'https://b1219727.yclients.com/company/1116949/personal/menu?o=';
+            case '/savin':
+                return 'https://b583630.yclients.com/company/551568/personal/menu?o=';
+            default:
+                return 'https://b1333420.yclients.com/select-city/157/select-branch?o=';
+        }
+    };
+
+    const handleBooking = () => {
+        window.open(getBookingUrl());
+        handleMenuClick();
+    };
 
     const handleMenuClick = () => {
         setIsOpen(!isOpen);
@@ -57,48 +75,50 @@ export default function Menu() {
                     <nav className="py-6 text-center flex flex-col gap-y-6">
                         <MobileAccordion title="Салоны">
                             <div className="flex flex-col gap-y-2">
-                                <Link href="/" className="uppercase font-tilda-sans font-light text-sm">
+                                <Link href="/savin" className="uppercase font-tilda-sans font-light text-sm">
                                     Салон на Саввинском шоссе
                                 </Link>
-                                <Link href="/" className="uppercase font-tilda-sans font-light text-sm">
+                                <Link href="/opolch" className="uppercase font-tilda-sans font-light text-sm">
                                     Салон на Народного ополчения
                                 </Link> 
                             </div>
                         </MobileAccordion>
-                        <Link href="/" className="uppercase font-tilda-sans font-bold text-sm">
+                        <Link href="/team" className="uppercase font-tilda-sans font-bold text-sm">
                             Наша команда
                         </Link>
-                        <Link href="/" className="uppercase font-tilda-sans font-bold text-sm">
-                            подарочные карты
-                        </Link>
-                        <Link href="/" className="uppercase font-tilda-sans font-bold text-sm">
+                        <Link href="/promotion" className="uppercase font-tilda-sans font-bold text-sm">
                             акции
                         </Link>
                         <MobileAccordion title="Обучение">
                             <div className="flex flex-col gap-y-2">
-                                <Link href="/" className="uppercase font-tilda-sans font-light text-sm">
+                                <Link href="/study" className="uppercase font-tilda-sans font-light text-sm">
                                     Программа обучения
                                 </Link>
-                                <Link href="/" className="uppercase font-tilda-sans font-light text-sm">
-                                    Сертификаты
-                                </Link> 
-                                <Link href="/" className="uppercase font-tilda-sans font-light text-sm">
-                                    Работы учеников
-                                </Link> 
                             </div>
                         </MobileAccordion>
-                        <Link href="/" className="uppercase font-tilda-sans font-bold text-sm">
+                        <Link href="/blog" className="uppercase font-tilda-sans font-bold text-sm">
                             блог
                         </Link>
-                        <Link href="/" className="uppercase font-tilda-sans font-bold text-sm">
+                        <Link href="/contact" className="uppercase font-tilda-sans font-bold text-sm">
                             Контакты
                         </Link>
                     </nav>
                     <div className="pb-6 flex flex-col gap-y-5">
-                        <Button>
+                        <Button 
+                            onClick={handleBooking}
+                        >
                             Записаться
                         </Button>
-                        <Button variant="outline">
+                        <Button 
+                            variant="outline"
+                            onClick={() => {
+                                handleMenuClick()
+                                document.getElementById('prices')?.scrollIntoView({ 
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                })
+                            }}
+                        >
                             посмотреть цены
                         </Button>
                         <div className="flex items-center justify-center gap-x-2.5">

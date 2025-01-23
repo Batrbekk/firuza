@@ -429,7 +429,10 @@ export default function Home() {
                           </div>
                         </FadeUpText>
                     </div>
-                    <Button className="w-full md:w-[240px] mt-7">
+                    <Button 
+                        className="w-full md:w-[240px] mt-7 ms_booking"
+                        data-yclients-company-id={YCLIENTS_IDS.MAIN}
+                    >
                         записаться
                     </Button>
                 </div>

@@ -63,15 +63,13 @@ const Benefit = ({ subtitle, title, description, image, stats, imagePosition = '
   )
 
   const imageBlock = (
-    <SlideUpReveal delay={0} maskColor='#292929'>
-      <div className="w-full lg:w-[520px] h-[448px] relative">
-        <Image
+    <SlideUpReveal delay={0} maskColor='#292929' className="w-full lg:w-[520px] h-[448px] relative">
+      <Image
           src={image}
           fill
           alt="Benefit illustration"
           className="object-cover absolute top-0 left-0 w-full h-full"
         />
-      </div>
     </SlideUpReveal>
   )
 

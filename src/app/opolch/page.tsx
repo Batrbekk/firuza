@@ -58,7 +58,7 @@ export default function Opolch() {
               <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px]">
                 САЛОН
               </TextReveal>
-              <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px] max-w-[314px] md:max-w-full">
+              <TextReveal className="uppercase text-white font-tenor-sans text-[28px] md:text-[64px] max-w-[280px] md:max-w-full">
                 на Народного ополчения
               </TextReveal>
             </div>
