@@ -1,4 +1,4 @@
- 'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
@@ -8,6 +8,7 @@ import Button from './Button'
 import { Checkbox } from './Checkbox'
 import Select from './Select'
 import { toast } from 'sonner'
+import { IMaskInput } from 'react-imask'
 
 interface CourseModalProps {
   isOpen: boolean
@@ -123,12 +124,25 @@ export default function CourseModal({ isOpen, onClose }: CourseModalProps) {
     
     if (hasError) return
 
-    // Эмуляция отправки
     setIsLoading(true)
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
+      const formDataToSend = new FormData()
+      formDataToSend.append('course', formData.course)
+      formDataToSend.append('name', formData.name)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('phone', formData.phone)
+      formDataToSend.append('salon', formData.salon)
+
+      const response = await fetch('/study-mail', {
+        method: 'POST',
+        body: formDataToSend,
+      })
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+
       toast.success('Заявка успешно отправлена!', {
         className: 'font-tilda-sans',
         style: {
@@ -242,18 +256,26 @@ export default function CourseModal({ isOpen, onClose }: CourseModalProps) {
                 }}
               />
 
-              <Input
-                placeholder="Телефон*"
-                value={formData.phone}
-                variant="black"
-                className="h-[50px]"
-                error={errors.phone}
-                errorMessage={errors.phone ? "Введите корректный номер телефона" : undefined}
-                onChange={(e) => {
-                  setFormData(prev => ({ ...prev, phone: e.target.value }))
-                  setErrors(prev => ({ ...prev, phone: false }))
-                }}
-              />
+              <div className="">
+                <IMaskInput
+                  mask="+{7} (000) 000-00-00"
+                  value={formData.phone}
+                  unmask={false}
+                  onAccept={(value) => {
+                    setFormData(prev => ({ ...prev, phone: value }));
+                    setErrors(prev => ({ ...prev, phone: false }));
+                  }}
+                  className={`h-[50px] px-4 bg-transparent border font-tilda-sans text-[14px] placeholder:text-black/40 focus:outline-none transition-colors w-full ${
+                    errors.phone 
+                      ? 'border-[#F00F0F] focus:border-[#F00F0F]' 
+                      : 'border-black focus:border-primary'
+                  }`}
+                  placeholder="Телефон*"
+                />
+                {errors.phone && (
+                  <p className="mt-1 text-[#F00F0F] text-sm font-tilda-sans">Введите телефон</p>
+                )}
+              </div>
 
               <Select
                 options={['на Саввинском шоссе', 'на Народного ополчения']}
