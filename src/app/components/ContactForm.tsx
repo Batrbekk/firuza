@@ -4,15 +4,15 @@ import { useState, FormEvent } from "react";
 import { Checkbox } from "./Checkbox";
 import FileInput from "./FileInput";
 import Input from "./Input";
-import Select from "./Select";
 import TextArea from "./TextArea";
 import Button from "./Button";
 import { toast } from 'sonner';
+import { IMaskInput } from 'react-imask';
 
 interface FormData {
 	name: string;
 	email: string;
-	type: string;
+	phone: string;
 	message: string;
 	file: File | null;
 	consent: boolean;
@@ -23,15 +23,16 @@ export default function ContactForm() {
 	const [formData, setFormData] = useState<FormData>({
 		name: '',
 		email: '',
-		type: '',
+		phone: '',
 		message: '',
 		file: null,
 		consent: false
 	});
 
 	const [errors, setErrors] = useState({
+		name: false,
 		email: false,
-		type: false,
+		phone: false,
 		message: false,
 		consent: false
 	});
@@ -45,8 +46,9 @@ export default function ContactForm() {
 		
 		// Сброс ошибок
 		setErrors({
+			name: false,
 			email: false,
-			type: false,
+			phone: false,
 			message: false,
 			consent: false
 		});
@@ -54,13 +56,18 @@ export default function ContactForm() {
 		// Валидация
 		let hasError = false;
 		
+		if (!formData.name.trim()) {
+			setErrors(prev => ({ ...prev, name: true }));
+			hasError = true;
+		}
+		
 		if (!validateEmail(formData.email)) {
 			setErrors(prev => ({ ...prev, email: true }));
 			hasError = true;
 		}
 		
-		if (!formData.type) {
-			setErrors(prev => ({ ...prev, type: true }));
+		if (!formData.phone) {
+			setErrors(prev => ({ ...prev, phone: true }));
 			hasError = true;
 		}
 		
@@ -74,14 +81,36 @@ export default function ContactForm() {
 			hasError = true;
 		}
 		
+		// Проверяем, что номер телефона заполнен полностью
+		const phoneDigits = formData.phone.replace(/\D/g, '');
+		if (phoneDigits.length !== 11) {
+			setErrors(prev => ({ ...prev, phone: true }));
+			hasError = true;
+		}
+		
 		if (hasError) return;
 
-		// Эмуляция отправки
 		setIsLoading(true);
 		
 		try {
-			await new Promise(resolve => setTimeout(resolve, 1500));
-			
+			const formDataToSend = new FormData();
+			formDataToSend.append('name', formData.name);
+			formDataToSend.append('email', formData.email);
+			formDataToSend.append('phone', formData.phone);
+			formDataToSend.append('message', formData.message);
+			if (formData.file) {
+				formDataToSend.append('file', formData.file);
+			}
+
+			const response = await fetch('/contact-mail', {
+				method: 'POST',
+				body: formDataToSend,
+			});
+
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+
 			toast.success('Сообщение успешно отправлено!', {
 				className: 'font-tilda-sans',
 				style: {
@@ -96,7 +125,7 @@ export default function ContactForm() {
 			setFormData({
 				name: '',
 				email: '',
-				type: '',
+				phone: '',
 				message: '',
 				file: null,
 				consent: false
@@ -122,10 +151,15 @@ export default function ContactForm() {
 				<div className="flex flex-col md:flex-row gap-5">
 					<Input 
 						variant="black" 
-						placeholder="Имя" 
+						placeholder="Имя*" 
 						className="w-full md:max-w-[240px] h-[50px]"
 						value={formData.name}
-						onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+						error={errors.name}
+						errorMessage={errors.name ? "Введите имя" : undefined}
+						onChange={(e) => {
+							setFormData(prev => ({ ...prev, name: e.target.value }));
+							setErrors(prev => ({ ...prev, name: false }));
+						}}
 					/>
 					<Input 
 						variant="black" 
@@ -139,17 +173,26 @@ export default function ContactForm() {
 							setErrors(prev => ({ ...prev, email: false }));
 						}}
 					/>
-					<Select 
-						options={['Салоны', 'Другой салон', 'Еще салон']}
-						placeholder="Вид обращения*"
-						className="w-full lg:w-[500px]"
-						value={formData.type}
-						error={errors.type}
-						onChange={(value) => {
-							setFormData(prev => ({ ...prev, type: value }));
-							setErrors(prev => ({ ...prev, type: false }));
-						}}
-					/>
+					<div className="">
+						<IMaskInput
+							mask="+{7} (000) 000-00-00"
+							value={formData.phone}
+							unmask={false}
+							onAccept={(value) => {
+								setFormData(prev => ({ ...prev, phone: value }));
+								setErrors(prev => ({ ...prev, phone: false }));
+							}}
+							className={`h-[50px] px-4 bg-transparent border font-tilda-sans text-[14px] placeholder:text-black/40 focus:outline-none transition-colors w-full lg:w-[500px] ${
+								errors.phone 
+									? 'border-[#F00F0F] focus:border-[#F00F0F]' 
+									: 'border-black focus:border-primary'
+							}`}
+							placeholder="Телефон*"
+						/>
+						{errors.phone && (
+							<p className="mt-1 text-[#F00F0F] text-sm font-tilda-sans">Введите телефон</p>
+						)}
+					</div>
 				</div>
 				<TextArea 
 					placeholder="Задайте вопрос*" 
