@@ -14,6 +14,7 @@ import { Checkbox } from "../components/Checkbox";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import FadeUpText from "../components/FadeUpText";
+import PromotionForm from "../components/PromotionForm";
 
 // Регистрируем плагин ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -146,20 +147,8 @@ export default function Promotion() {
                         </Link>
                     </div>
                 </div>
-                <div className="max-w-[628px] w-full flex flex-col gap-y-3">
-                    <Checkbox 
-                        label="Я прочитал(а) и даю Согласие на получение информационной и рекламной рассылки"
-                        checked={checked}
-                        onChange={() => setChecked(!checked)}
-                    />
-                    <Checkbox 
-                        label="Я прочитал(а) и согласен(а) с Политикой обработки персональных данных и даю Согласие на обработку персональных данных"
-                        checked={checkPolicy}
-                        onChange={() => setCheckPolicy(!checkPolicy)}
-                    />
-                    <Button>
-                        Записаться
-                    </Button>
+                <div className="max-w-[628px] w-full">
+                    <PromotionForm />
                 </div>
             </section>
             <Footer />
