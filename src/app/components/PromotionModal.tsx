@@ -7,6 +7,7 @@ import Input from './Input'
 import Button from './Button'
 import { Checkbox } from './Checkbox'
 import { toast } from 'sonner'
+import { IMaskInput } from 'react-imask'
 
 interface PromotionModalProps {
   isOpen: boolean
@@ -50,17 +51,17 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
   if (!isOpen || !mounted) return null
 
   const validatePhone = (phone: string) => {
-    return phone.length >= 10
+    const phoneDigits = phone.replace(/\D/g, '');
+    return phoneDigits.length === 11;
   }
 
   const handleSubmit = async () => {
-    // Сброс ошибок
     setErrors({ phone: false, consents: false })
     
-    // Валидация
     let hasError = false
     
-    if (!validatePhone(formData.phone)) {
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 11) {
       setErrors(prev => ({ ...prev, phone: true }))
       hasError = true
     }
@@ -72,11 +73,20 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
     
     if (hasError) return
 
-    // Эмуляция отправки
     setIsLoading(true)
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      const formDataToSend = new FormData()
+      formDataToSend.append('phone', formData.phone)
+
+      const response = await fetch('/promotion-call-mail', {
+        method: 'POST',
+        body: formDataToSend,
+      })
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
       
       toast.success('Заявка успешно отправлена!', {
         className: 'font-tilda-sans',
@@ -88,7 +98,6 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
         duration: 3000
       })
       
-      // Очистка формы
       setFormData({
         phone: '',
         consent1: false,
@@ -148,17 +157,26 @@ export default function PromotionModal({ isOpen, onClose }: PromotionModalProps)
             </div>
 
             <div className="flex flex-col gap-4 md:gap-3">
-              <Input
-                placeholder="Телефон"
-                value={formData.phone}
-                variant="black"
-                error={errors.phone}
-                errorMessage={errors.phone ? "Введите корректный номер телефона" : undefined}
-                onChange={(e) => {
-                  setFormData({...formData, phone: e.target.value})
-                  setErrors(prev => ({ ...prev, phone: false }))
-                }}
-              />
+              <div className="">
+                <IMaskInput
+                  mask="+{7} (000) 000-00-00"
+                  value={formData.phone}
+                  unmask={false}
+                  onAccept={(value) => {
+                    setFormData(prev => ({ ...prev, phone: value }));
+                    setErrors(prev => ({ ...prev, phone: false }));
+                  }}
+                  className={`h-[50px] px-4 bg-transparent border font-tilda-sans text-[14px] placeholder:text-black/40 focus:outline-none transition-colors w-full ${
+                    errors.phone 
+                      ? 'border-[#F00F0F] focus:border-[#F00F0F]' 
+                      : 'border-black focus:border-primary'
+                  }`}
+                  placeholder="Телефон*"
+                />
+                {errors.phone && (
+                  <p className="mt-1 text-[#F00F0F] text-sm font-tilda-sans">Введите телефон</p>
+                )}
+              </div>
 
               <div className="flex flex-col gap-y-4 md:gap-3">
                 <Checkbox
